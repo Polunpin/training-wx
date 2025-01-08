@@ -6,7 +6,7 @@
           <view class="title">体验课</view>
           <view class="desc">护安行陪驾，开车不再怕</view>
         </view>
-        <image src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/hotel-reservation-success.png?sign=b16f7d547e80614556e8ff0a65df60ee&t=1730479658" mode="" class="img"></image>
+        <image src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/hotel-reservation-success.png?sign=b16f7d547e80614556e8ff0a65df60ee&t=1730479658" class="img"></image>
       </view>
     </view>
     <view class="form-box">
@@ -45,7 +45,6 @@
               <view class="icon-wrap">
                 <image
                     src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/address.png?sign=e67e73e99af6613896993a4814d0e56c&t=1730479177"
-                    mode=""
                     class="icon"
                 ></image>
               </view>
@@ -106,7 +105,6 @@
           <view class="upload" v-if="!imgData" @click="uploadImg">
             <image
                 src="../../static/images/image.png"
-                mode=""
                 class="icon"
             ></image>
             <text class="text">上传图片</text>
@@ -114,7 +112,6 @@
           <view class="preview" v-else>
             <image
                 :src="imgData.url"
-                mode=""
                 class="image"
                 @click="handlePreview"
             ></image>
@@ -124,7 +121,6 @@
             </view>
             <image
                 src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/delete.png?sign=83166bdc57a92a911b5e5e9e83e3a9ac&t=1730479341"
-                mode=""
                 class="delete"
                 @click="handleRemove"
             >
@@ -581,8 +577,8 @@ export default {
   }
 
   /deep/ .uni-forms-item {
-    margin-bottom: 0rpx !important;
-    padding: 0rpx 15rpx;
+    margin-bottom: 0 !important;
+    padding: 0 15rpx;
   }
 
   /deep/ .uni-forms-item.is-direction-left {

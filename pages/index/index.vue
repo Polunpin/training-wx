@@ -1,6 +1,14 @@
 <template>
   <view class="container" v-if="userinfo">
-    <image src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/logo.png?sign=624ce5a1a14883bfe5d569fe5454cee9&t=1730479945" mode="" class="logo"></image>
+    <image
+        v-if="true"
+        src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/logo.png?sign=624ce5a1a14883bfe5d569fe5454cee9&t=1730479945"
+        class="logo"></image>
+    <image
+        v-else
+        src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/task.png?sign=235193151d2ec51b66905f457d84289c&t=1736369942"
+        class="logo"></image>
+
     <view class="info-block">
       <view class="title">{{ userinfo.stuName }}</view>
       <view class="tag">
@@ -9,31 +17,33 @@
       </view>
     </view>
     <view class="list-box">
-		<view class="list-item">
-		  <image
-			src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/study.png?sign=fbb5f55a3d8528e06531094648a99ed6&t=1731692176"
-			mode=""
-			class="img"
-			@click="jumpStudy"></image>
-		</view>
       <view class="list-item">
         <button class="btn" @click="jumpCustomerService"></button>
-        <image src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/kehu.png?sign=270644f53ab8cff63318b7e83613c257&t=1730479739" mode="" class="img"></image>
+        <image
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/kehu.png?sign=270644f53ab8cff63318b7e83613c257&t=1730479739"
+            class="img"></image>
       </view>
+
       <view class="list-item">
         <image
-          src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/yuyue.png?sign=cc541147500b5fc84c4cadcaacc6caf7&t=1730479825"
-          mode=""
-          class="img"
-          @click="jumpCourse"
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/study.png?sign=fbb5f55a3d8528e06531094648a99ed6&t=1731692176"
+            class="img"
+            @click="jumpStudy"></image>
+      </view>
+
+      <view class="list-item">
+        <image
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/yuyue.png?sign=cc541147500b5fc84c4cadcaacc6caf7&t=1730479825"
+            class="img"
+            @click="jumpCourse"
         ></image>
       </view>
+
       <view class="list-item">
         <image
-          src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/jilu.png?sign=8d735fd4bd1d7e3c1809142f99c47954&t=1730479715"
-          mode=""
-          class="img"
-          @click="jumpRecord"
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/jilu.png?sign=8d735fd4bd1d7e3c1809142f99c47954&t=1730479715"
+            class="img"
+            @click="jumpRecord"
         ></image>
       </view>
     </view>
@@ -41,8 +51,9 @@
 </template>
 
 <script>
-import { get } from "@/utils/request.js";
-import { mapGetters } from "vuex";
+import {get} from "@/utils/request.js";
+import {mapGetters} from "vuex";
+
 export default {
   data() {
     return {};
@@ -58,6 +69,7 @@ export default {
     });
   },
   methods: {
+    //客服
     jumpCustomerService() {
       wx.openCustomerServiceChat({
         extInfo: {
@@ -70,61 +82,58 @@ export default {
         },
       });
     },
-	
-	jumpStudy() {
-		wx.openOfficialAccountArticle({
-			 url:'https://mp.weixin.qq.com/s?__biz=MzkxNjY3OTM1Ng==&mid=2247483726&idx=1&sn=a2daa9f82ddc8740b5da21c40060ad4f&chksm=c14d7e9df63af78b72d8bd2d11a56a87732b08173fb3b0a37eec500c8cd0fb16044f893c4faf#rd', // 此处填写公众号文章连接
-			 success: res => {
-			 },
-			 fail: res => {
-			 }
-		 })
-	},
-	
+
+    //学习
+    jumpStudy() {
+      console.log("AAA");
+    },
+
+    //预约
     jumpCourse() {
       if (this.userinfo.isAppointment) {
-		  if (this.userinfo.trainerId === null) {  
-			uni.showToast({
-			  title: "客服分派教练中",
-			  icon: "none",
-			});
-		  } else if (this.userinfo.lave === 0) {  
-			  if (this.userinfo.used === 2) {
-			    uni.showToast({
-			      title: "请联系客服，购买正式课",
-			      icon: "none",
-			    });
-			  }  else {
-			  	uni.showToast({
-			  	  title: "🚙 山川湖海，一路平安 👋🏻已结课",
-			  	  icon: "none",
-			  	});
-			  }
-		  } else {
-			  uni.navigateTo({
-			    url: "/pages/formal/formal",
-			  });
-		  }
+        if (this.userinfo.trainerId === null) {
+          uni.showToast({
+            title: "客服分派教练中",
+            icon: "none",
+          });
+        } else if (this.userinfo.lave === 0) {
+          if (this.userinfo.used === 2) {
+            uni.showToast({
+              title: "请联系客服，购买正式课",
+              icon: "none",
+            });
+          } else {
+            uni.showToast({
+              title: "🚙 山川湖海，一路平安 👋🏻已结课",
+              icon: "none",
+            });
+          }
+        } else {
+          uni.navigateTo({
+            url: "/pages/formal/formal",
+          });
+        }
       } else {
-		  if (this.userinfo.id === 0) {
-		    uni.showToast({
-		      title: "联系客服，确认上课时间",
-		      icon: "none",
-		    });
-		  }  else {
-		  	uni.navigateTo({
-		  	  url: "/pages/reservation/reservation",
-		  	});
-		  }
-        
+        if (this.userinfo.id === 0) {
+          uni.showToast({
+            title: "联系客服，确认上课时间",
+            icon: "none",
+          });
+        } else {
+          uni.navigateTo({
+            url: "/pages/reservation/reservation",
+          });
+        }
+
       }
     },
 
+    //记录
     jumpRecord() {
       if (this.userinfo.isAppointment) {
-      	uni.navigateTo({
-      	  url: "/pages/record/record",
-      	});
+        uni.navigateTo({
+          url: "/pages/record/record",
+        });
       } else {
         uni.showToast({
           title: "暂无预约记录",
@@ -151,14 +160,11 @@ export default {
 
   .info-block {
     box-sizing: border-box;
-    padding: 50rpx 50rpx;
-    box-sizing: border-box;
     margin-left: auto;
     margin-top: 120rpx;
-    padding-right: 400rpx;
+    padding: 50rpx 400rpx 50rpx 50rpx;
     background: #eaf5fa url("https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/"+
-		"images/fxp.png?sign=6ebde2db0fbd249637f9d1c3960bc624&t=1730479402") no-repeat right
-      bottom;
+		"images/fxp.png?sign=6ebde2db0fbd249637f9d1c3960bc624&t=1730479402") no-repeat right bottom;
     background-size: 112rpx 112rpx;
     border-top-left-radius: 15rpx;
     border-bottom-left-radius: 15rpx;
@@ -215,7 +221,9 @@ export default {
         }
       }
 
-      &:nth-child(2) {
+      //功能图标右对齐
+      &:nth-child(2),
+      &:nth-child(4){
         display: flex;
         justify-content: flex-end;
         margin: 50rpx 0;

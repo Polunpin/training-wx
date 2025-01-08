@@ -442,8 +442,8 @@ export default {
 		}
 	}
 	/deep/ .uni-forms-item {
-		margin-bottom: 0rpx !important;
-		padding: 0rpx 15rpx;
+		margin-bottom: 0 !important;
+		padding: 0 15rpx;
 	}
 	/deep/ .uni-forms-item.is-direction-left {
 		align-items: center !important;
