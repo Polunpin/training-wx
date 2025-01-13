@@ -31,6 +31,11 @@
                 v-model="formData.phone"
                 placeholder="请输入手机号（大陆地区）"
             />
+            <!-- 获取手机号 -->
+            <button open-type="getPhoneNumber"
+                    class="get-phone-button"
+                    size='mini'
+                    @getphonenumber="getPhoneNumber">获取</button>
           </uni-forms-item>
         </view>
         <view class="border-box">
@@ -230,6 +235,14 @@ export default {
   onLoad() {
   },
   methods: {
+    //获取手机号
+    getPhoneNumber(e) {
+      get("/weCom/getPhoneNumber", {
+        code: e.detail.code,
+      }).then((res) => {
+        this.formData.phone = res;
+      });
+    },
     //开始选择日期确认
     startConfirm(e) {
       this.formData.startTime = timeFormat(e.value, "yyyy-mm-dd hh:MM");
@@ -323,6 +336,11 @@ export default {
 	  	});
 	  	return;
 	  }
+    wx.requestSubscribeMessage({
+      //课堂反馈通知
+      tmplIds: ['UaY5tuSTDJn7ufVFvLlILru4jpmL_nmrAmwXyV7IQoQ'],
+      success (res) { }
+    })
       const data = {
         openId: uni.getStorageSync("openid"),
         studentId: this.userinfo.id,
@@ -522,6 +540,24 @@ export default {
   margin-top: 25rpx;
   border: solid 1px #64b0d2 !important;
   border-radius: 15rpx;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-field {
+  flex: 1;
+  margin-right: 10px; /* 根据需要调整间距 */
+}
+
+.get-phone-button {
+  position: absolute;
+  right: 10px; /* 根据需要调整间距 */
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .container {
@@ -732,6 +768,7 @@ export default {
       background-color: #ffffff !important;
     }
   }
+
 
   .submit-box {
     z-index: 10;

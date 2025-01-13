@@ -271,6 +271,11 @@ export default {
 				});
 				return;
 			}
+      wx.requestSubscribeMessage({
+        //课堂反馈通知
+        tmplIds: ['UaY5tuSTDJn7ufVFvLlILru4jpmL_nmrAmwXyV7IQoQ'],
+        success (res) { }
+      })
 			const data = {
 				openId: uni.getStorageSync('openid'),
 				studentId: this.userinfo.id,
