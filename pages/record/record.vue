@@ -160,7 +160,7 @@ export default {
 			width: 96rpx;
 			height: 96rpx;
 			border-radius: 24rpx;
-			box-shadow: 1px 1px 4px 0px #00000040;
+			box-shadow: 1px 1px 4px 0 #00000040;
 		}
 	}
 
@@ -206,9 +206,9 @@ export default {
 		background: #30669f;
 		display: flex;
 		border-radius: 24rpx;
-		padding: 28rpx 0rpx 28rpx 28rpx;
+		padding: 28rpx 0 28rpx 28rpx;
 		margin-bottom: 20rpx;
-		box-shadow: 0px 0px 10px 0px rgba(186, 223, 240, 0.6);
+		box-shadow: 0 0 10px 0 rgba(186, 223, 240, 0.6);
 
 		p {
 			color: #ffffff;
@@ -223,14 +223,14 @@ export default {
 
 		.gold {
 			position: absolute;
-			right: 0rpx;
-			bottom: 0rpx;
+			right: 0;
+			bottom: 0;
 			background: #e2bf8b;
 			color: #4e3108;
 			padding: 6rpx 18rpx;
 			font-size: 28rpx;
 			font-weight: bold;
-			border-radius: 15rpx 0rpx 24rpx 0rpx;
+			border-radius: 15rpx 0 24rpx 0;
 		}
 	}
 
@@ -238,9 +238,8 @@ export default {
 		padding: 20rpx 25rpx;
 		background-color: #ffffff;
 		border-radius: 15rpx;
-		box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.1);
-		margin-bottom: 20rpx;
-		box-shadow: 0px 0px 10px 0px #badff099;
+    margin-bottom: 20rpx;
+		box-shadow: 0 0 10px 0 #badff099;
 
 		.content-title {
 			margin-bottom: 30rpx;
@@ -293,7 +292,7 @@ export default {
 				color: #1d1e22;
 				font-size: 28rpx;
 				font-weight: 400;
-				margin: 15rpx 0rpx;
+				margin: 15rpx 0;
 			}
 
 			.rate-item {
