@@ -1,0 +1,211 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 容器 */
+.container.data-v-de1f2476 {
+  padding: 20rpx;
+  background-color: #ffffff;
+}
+/* 顶部标题区域 */
+.header.data-v-de1f2476 {
+  margin-bottom: 20rpx;
+}
+.page-title.data-v-de1f2476 {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+/* 阶段卡片区域 */
+.stage-cards.data-v-de1f2476 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30rpx;
+}
+.card.data-v-de1f2476 {
+  width: 160rpx;
+  height: 200rpx;
+  border-radius: 16rpx;
+  margin-right: 20rpx;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx;
+}
+.card-content.data-v-de1f2476 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.stage-title.data-v-de1f2476 {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+.progress-box.data-v-de1f2476 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: auto;
+}
+.progress-icon.data-v-de1f2476 {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+.progress-text.data-v-de1f2476 {
+  font-size: 24rpx;
+  color: #333;
+}
+.locked-box.data-v-de1f2476 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.locked-icon.data-v-de1f2476 {
+  width: 48rpx;
+  height: 48rpx;
+  opacity: 0.8;
+}
+/* 知识点列表区域 */
+.knowledge-list.data-v-de1f2476 {
+  padding-top: 10rpx;
+}
+.knowledge-item.data-v-de1f2476 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+.index-box.data-v-de1f2476 {
+  width: 46rpx;
+  height: 46rpx;
+  background-color: #cce1ff;
+  border-radius: 8rpx;
+  color: #333;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 46rpx;
+  margin-right: 12rpx;
+}
+.text-box.data-v-de1f2476 {
+  display: flex;
+  flex-direction: column;
+}
+.item-title.data-v-de1f2476 {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+.item-desc.data-v-de1f2476 {
+  font-size: 24rpx;
+  color: #666;
+}
+

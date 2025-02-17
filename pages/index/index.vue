@@ -17,14 +17,14 @@
       </view>
     </view>
     <view class="list-box">
-      <view class="list-item">
+      <view class="list-item" v-if="userinfo.id === 0">
         <button class="btn" @click="jumpCustomerService"></button>
         <image
             src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/kehu.png?sign=270644f53ab8cff63318b7e83613c257&t=1730479739"
             class="img"></image>
       </view>
 
-      <view class="list-item">
+      <view class="list-item" v-if="userinfo.id !== 0">
         <image
             src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/study.png?sign=fbb5f55a3d8528e06531094648a99ed6&t=1731692176"
             class="img"
@@ -86,6 +86,9 @@ export default {
     //学习
     jumpStudy() {
       console.log("AAA");
+      uni.navigateTo({
+        url: "/pages/knowledge/drive-tips",
+      });
     },
 
     //预约
