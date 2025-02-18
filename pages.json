@@ -48,7 +48,21 @@
         "navigationBarTitleText": "驾驶宝典",
         "navigationBarBackgroundColor": "#ffffff"
       }
-    }
+    },
+	{
+	  "path": "pages/studyView/studyIndex",
+	  "style": {
+	    "navigationBarTitleText": "学习界面",
+	    "navigationBarBackgroundColor": "#ffffff"
+	  }
+	},
+	{
+	  "path": "pages/studyView/studyInfo",
+	  "style": {
+	    "navigationBarTitleText": "学习详情",
+	    "navigationBarBackgroundColor": "#ffffff"
+	  }
+	}
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",

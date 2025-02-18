@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@zebra-ui/swiper": "^2.2.8"
+  }
+}
