@@ -1,74 +1,76 @@
 {
-  "pages": [
-    {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/reservation/reservation",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/record/record",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/formal/formal",
-      "style": {
-        "navigationBarTitleText": "",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/submit/success/success",
-      "style": {
-        "navigationBarTitleText": "预约成功",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/submit/fail/fail",
-      "style": {
-        "navigationBarTitleText": "预约失败",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-    {
-      "path": "pages/knowledge/drive-tips",
-      "style": {
-        "navigationBarTitleText": "驾驶宝典",
-        "navigationBarBackgroundColor": "#ffffff"
-      }
-    },
-	{
-	  "path": "pages/studyView/studyIndex",
-	  "style": {
-	    "navigationBarTitleText": "学习界面",
-	    "navigationBarBackgroundColor": "#ffffff"
-	  }
+	"easycom": {
+		"^z-(.*)": "@zebra-ui/swiper/components/z-$1/z-$1.vue"
 	},
-	{
-	  "path": "pages/studyView/studyInfo",
-	  "style": {
-	    "navigationBarTitleText": "学习详情",
-	    "navigationBarBackgroundColor": "#ffffff"
-	  }
-	}
-  ],
-  "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "护安行",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  },
-  "uniIdRouter": {}
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/reservation/reservation",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/record/record",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/formal/formal",
+			"style": {
+				"navigationBarTitleText": "",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/submit/success/success",
+			"style": {
+				"navigationBarTitleText": "预约成功",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/submit/fail/fail",
+			"style": {
+				"navigationBarTitleText": "预约失败",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/knowledge/drive-tips",
+			"style": {
+				"navigationBarTitleText": "驾驶宝典",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/studyView/studyIndex",
+			"style": {
+				"navigationBarTitleText": "1",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/studyView/studyInfo",
+			"style": {
+				"navigationBarTitleText": "2",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "护安行",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
 }

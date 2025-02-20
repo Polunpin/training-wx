@@ -6,7 +6,9 @@
     "pages/formal/formal",
     "pages/submit/success/success",
     "pages/submit/fail/fail",
-    "pages/knowledge/drive-tips"
+    "pages/knowledge/drive-tips",
+    "pages/studyView/studyIndex",
+    "pages/studyView/studyInfo"
   ],
   "subPackages": [],
   "window": {

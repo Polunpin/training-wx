@@ -26,6 +26,7 @@ export function request(options = {}) {
 			},
 			timeout: options.timeout || 30000
 		}
+		console.log(baseURL + options.url,'请求地址')
 
 		uni.request({
 			...defaultOptions,

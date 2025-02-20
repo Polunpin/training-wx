@@ -1,0 +1,125 @@
+.data-v-2b06e926::-webkit-scrollbar {
+  display: none;
+  /* 隐藏WebKit浏览器的滚动条 */
+}
+/* 兼容Firefox */
+/* 兼容IE和Edge */
+.img.data-v-2b06e926 {
+  width: 100%;
+  height: 600rpx;
+}
+.img .imgItem.data-v-2b06e926 {
+  width: 100%;
+  height: 100%;
+}
+.fixed-box.data-v-2b06e926 {
+  position: fixed;
+  bottom: 20rpx;
+  height: 90rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.fixed-box .fixed-item.data-v-2b06e926 {
+  height: 100%;
+}
+.fixed-box .btn.data-v-2b06e926 {
+  height: 100%;
+  width: 260rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.fixed-box .one.data-v-2b06e926 {
+  margin-right: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #FDF1B8;
+}
+.fixed-box .two.data-v-2b06e926 {
+  background-color: #5ab95b;
+  border-radius: 5rpx 0 0 5rpx;
+}
+.fixed-box .three.data-v-2b06e926 {
+  background-color: #f0776c;
+  border-radius: 0 5rpx 5rpx 0;
+  flex-direction: column;
+}
+.fixed-box .three .smallText.data-v-2b06e926 {
+  font-size: 8rpx;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+.content .tabOne.data-v-2b06e926 {
+  height: 75rpx;
+  font-size: 40rpx;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #F4F4F4;
+  padding: 0 10rpx;
+  overflow-y: scroll;
+}
+.content .tabOne .tabOne-item.data-v-2b06e926 {
+  padding: 0 20rpx;
+  line-height: 75rpx;
+  white-space: nowrap;
+  font-size: 30rpx;
+}
+.content .tabOne .pitch-tabOne.data-v-2b06e926 {
+  background-color: #fff;
+  -webkit-clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 0 100%);
+}
+.content .info.data-v-2b06e926 {
+  padding-top: 90rpx;
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 150rpx;
+}
+.content .info .tabTwo.data-v-2b06e926 {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 60rpx;
+  /* 以下属性可根据需要调整，用于设置弹性项目之间的间距 */
+  gap: 20rpx;
+}
+.content .info .tabTwo .tabTwo-item.data-v-2b06e926 {
+  padding: 0 10rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 2rpx solid #EEEEEE;
+  color: #929292;
+  border-radius: 6rpx;
+}
+.content .info .tabTwo .pitch-tabTwo.data-v-2b06e926 {
+  border: 2rpx solid #4882C0;
+  color: black;
+}
+.content .info .explain.data-v-2b06e926 {
+  padding: 30rpx;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60rpx;
+}
+.content .info .explain .title.data-v-2b06e926 {
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: 600;
+  line-height: 60rpx;
+}
+.content .info .property.data-v-2b06e926 {
+  padding: 0 30rpx;
+}
+.content .info .property .property-item.data-v-2b06e926 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50rpx;
+  font-size: 28rpx;
+  color: #1d1e22;
+}
+
