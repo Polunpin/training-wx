@@ -54,14 +54,14 @@
 		{
 			"path": "pages/studyView/studyIndex",
 			"style": {
-				"navigationBarTitleText": "1",
+				"navigationBarTitleText": "学习",
 				"navigationBarBackgroundColor": "#ffffff"
 			}
 		},
 		{
 			"path": "pages/studyView/studyInfo",
 			"style": {
-				"navigationBarTitleText": "2",
+				"navigationBarTitleText": "",
 				"navigationBarBackgroundColor": "#ffffff"
 			}
 		}

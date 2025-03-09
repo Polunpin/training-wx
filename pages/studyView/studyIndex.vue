@@ -1,48 +1,51 @@
 <template>
-	<view class="body">
-		<view class="swiper-box">
-			<z-swiper v-model="imgList" class="swiper-box"
+	<view class="study-index-wrap">
+		<!-- 		<view class="swiper-box">
+			<z-swiper v-model="imgList" class=""
 				:options="{slidesPerView : 3,centeredSlides : true,centeredSlidesBounds: true,}" @slideChange="onChange">
-				<!-- 	 loop : true -->
-				<z-swiper-item v-for="(item,index) in imgList" :key="index" :class="pitchLevel==item.level? 'bigImg' :''"
-					class="swiper-item" :ref="item.level" @click="clickItem(item)">
-					<!-- mode="aspectFill" -->
+				<z-swiper-item v-for="(item,index) in imgList" :key="index" 
+					 :ref="item.level" @click="clickItem(item)">
 					<view class="swiper-item" :class="pitchLevel==item.level? 'bigImg' :''">
 						<image class="image" :src="item.imgUrl"> </image>
 					</view>
 				</z-swiper-item>
 			</z-swiper>
+		</view> -->
+		<view class="swiper-box">
+			<view class="main" >
+				<view class="swiper-item" v-for="(item,index) in imgList" :key="index" :ref="item.level"
+					@click="clickItem(item)" :class="pitchLevel==item.level? 'bigImg' :''">
+					<image class="image" :src="'https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/study/'+item.imgUrl+'?sign=5dc985b4e8f195b8ad0a7f4ea9635ae9&t=1740967594'"> </image>
+				</view>
+			</view>
+
+
 		</view>
 		<!-- 目录 -->
 		<view class="catalog">
 			<view class="title">
 				目录
 			</view>
-			<view class="content-box" v-if="list.length!=0">
+			<view class="content-box" v-if="list.length & isRequest">
 				<view class="content-item" v-for="(item,index) in list" :key="index"
 					@click="jumpStudyInfo(item.secondLevel)">
-					<view class="index">
+					<view class="index" :style="{ 'background': color }">
 						{{index+1}}
 					</view>
-					<view class="mesage">
+					<view class="message">
 						<view class="text">
 							{{item.secondLevel}}
 						</view>
 						<ProgressBar :percentage="item.per" :text='item.text' :color="color" />
-
 					</view>
 				</view>
 			</view>
-			<view class="content-box" v-else>
+			<view class="empty" v-if="!list.length & isRequest">
 				暂无数据
 			</view>
-
-
 		</view>
-
 	</view>
 </template>
-<!--   -->
 <script>
 	import ProgressBar from '@/components/progressBar.vue';
 	import {
@@ -57,22 +60,22 @@
 			return {
 				imgList: [{
 						level: '基础',
-						imgUrl: '/static/images/基础.png',
+						imgUrl: 'swiper-base.png',
 						color: '#DBF3FD'
 					},
 					{
 						level: '初级',
-						imgUrl: '/static/images/初级.png',
+						imgUrl: 'swiper-chuji.png',
 						color: '#CAE9E0'
 					},
 					{
 						level: '中级',
-						imgUrl: '/static/images/中级.png',
+						imgUrl: 'swiper-zhongji.png',
 						color: '#FFDCBA'
 					},
 					{
 						level: '高级',
-						imgUrl: '/static/images/高级.png',
+						imgUrl: 'swiper-gaoji.png',
 						color: '#D7D4E5'
 					},
 
@@ -80,6 +83,7 @@
 				pitchLevel: '基础',
 				list: [],
 				studentId: '6',
+				isRequest: false
 			}
 		},
 		watch: {
@@ -91,6 +95,7 @@
 			color() {
 				return this.imgList.find(item => item.level == this.pitchLevel).color
 			},
+	
 		},
 		onLoad() {},
 		onShow() {
@@ -103,7 +108,9 @@
 		methods: {
 			// 学习模块 接口  // knowledge/knowledgeListByFirst   学习模块 post
 			getKnowledge(pitchLevel) {
+				this.isRequest  = false
 				let that = this
+				this.list = []
 				post("/knowledge/knowledgeListByFirst", {
 					"studentId": that.studentId,
 					"firstLevel": pitchLevel
@@ -113,11 +120,12 @@
 						item.per = Math.floor((item.learnCount / item.knowledgeSum) * 100)
 						return item
 					})
+					this.isRequest = true
 				});
 
 			},
 			checkout() {
-				let that=this
+				let that = this
 				let keyMap = {
 					"基础": '',
 					"初级": '基础',
@@ -132,10 +140,10 @@
 						"studentId": that.studentId,
 						"firstLevel": pitchLevel
 					}).then((res) => {
-						resolve(res.every((item)=>{
-							return item.knowledgeSum==item.learnCount
-						})) 
-	
+						resolve(res.every((item) => {
+							return item.knowledgeSum == item.learnCount
+						}))
+
 					});
 
 				})
@@ -165,78 +173,160 @@
 </script>
 
 <style scoped lang="less">
-	.body{
-		min-height: 100vh;
+	* {
+		font-family: 'PingFang sc', serif;
 	}
+	/deep/ ::-webkit-scrollbar {
+		display: none;
+		width: 0;
+		height: 0;
+		color: transparent;
+	}
+
+	/* 兼容Firefox */
+	::-webkit-scrollbar {
+		display: none;
+	}
+	* {
+		scrollbar-width: none;
+		/* Firefox */
+	}
+
+	/* 兼容IE和Edge */
+	* {
+		-ms-overflow-style: none;
+		/* IE和Edge */
+	}
+
+	.study-index-wrap {
+		padding-top: 100rpx;
+	}
+
+	// .swiper-box {
+	// 	margin-top: 110rpx;
+	// 	height: 300rpx;
+
+	// }
+
+	// .swiper-item {
+	// 	display: flex;
+	// 	justify-content: center;
+	// 	height: 300rpx;
+	// 	align-items: center;
+	// }
+
+	// .bigImg {
+	// 	.image {
+	// 		transform: scale(1.5);
+	// 	}
+	// }
+
+	// .image {
+	// 	height: 200rpx;
+	// 	width: 60%;
+	// }
+	//  145 200px  94 127
 	.swiper-box {
-		margin-top: 110rpx;
-		height: 300rpx;
+		height: 420rpx;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		width: 100vw;
+
+		.main {
+			height: 100%;
+			width: 1054rpx;
+			padding-left:50rpx;
+			display: flex;
+			flex-wrap: nowrap;
+			align-items: center;
+			gap: 50rpx;
+			.swiper-item {
+				width: 188rpx;
+				height: 254rpx;
+				flex-shrink: 0; /* 元素不缩小 */
+			}
+			.swiper-item:last-child{
+				margin-right: 50rpx;
+			}
 		
-	}
 
-	.swiper-item {
-		display: flex;
-		justify-content: center;
-		height: 300rpx;
-		align-items: center;
-	}
+			.bigImg {
+				width: 290rpx;
+				height: 400rpx;
+			}
 
-	.bigImg {
-		.image {
-			transform: scale(1.5);
+			.image {
+				width: 100%;
+				height: 100%;
+			}
 		}
+
 	}
 
-	.image {
-		height: 200rpx;
-		width: 60%;
-	}
 
 	.catalog {
-		margin-top: 40rpx;
-		padding: 0 40rpx;
+		padding: 100rpx 66rpx;
 
 		.title {
 			font-size: 56rpx;
 			font-weight: 700;
-			height: 100rpx;
-			line-height: 100rpx;
-			margin-bottom: 40rpx;
 		}
-
-		.content-item {
-			display: flex;
-			align-items: center;
-			height: 130rpx;
-			margin-bottom: 30rpx;
-
-			.index {
-				width: 80rpx;
-				height: 80rpx;
-				border-radius: 16rpx;
-				background-color: #CAE9E0;
-				color: '#FFFFFF';
-				text-align: center;
-				line-height: 80rpx;
-				margin-right: 40rpx;
-			}
-
-			.mesage {
-				border-bottom: 2rpx solid #F2F2F2;
-				height: 100%;
+		.content-box {
+			padding: 0 20rpx;
+			.content-item {
 				display: flex;
-				flex-direction: column;
-				justify-content: space-evenly;
-				width: 70%;
-
-				.text {
+				align-items: center;
+				padding: 40rpx 0 30rpx;
+				.index {
+					width: 80rpx;
+					height: 80rpx;
+					border-radius: 16rpx;
+					color: #fff;
+					text-align: center;
+					line-height: 80rpx;
+					margin-right: 30rpx;
+					font-weight: 600;
+					flex-shrink: 0;
+					position: relative;
+					top: 10rpx;
 					font-size: 40rpx;
-					line-height: 56rpx;
 				}
 
+				.message {
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					width: 100%;
+					position: relative;
+					// padding-bottom: 30rpx;
+					&::after {
+						content: '';
+						position: absolute;
+						bottom: -30rpx;
+						left: -50%;
+						display: block;
+						height: 1px;
+						width: 200%;
+						background: rgba(0, 0, 0, 0.1);
+						transform: scale(0.5);
+					}
+
+					.text {
+						font-size: 40rpx;
+						font-weight: 600;
+						margin-bottom: 10rpx;
+						color: #333;
+					}
+
+
+				}
 
 			}
-
+		}
+		.empty {
+			padding: 40rpx;
+			text-align: center;
 		}
 
 	}

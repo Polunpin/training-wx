@@ -1,5 +1,5 @@
-// export const baseURL = 'https://web.goldenguard.top'
-export const baseURL ='https://springboot-29s4-111846-4-1327385705.sh.run.tcloudbase.com'
+export const baseURL = 'https://web.goldenguard.top'
+// export const baseURL ='https://springboot-29s4-111846-4-1327385705.sh.run.tcloudbase.com'
 // const env = uni.getEnv();
 // let baseUrl;
 // if (env.platform === 'h5') {

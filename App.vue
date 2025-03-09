@@ -97,4 +97,8 @@
 
 <style>
 	/*每个页面公共css */
+	@font-face {
+		font-family: 'MyFontPacifico';
+		src: url('https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/font/Pacifico-Regular.ttf?sign=10fe67040e1cb80fcafa4af2ecbd24e2&t=1741091069');
+	}
 </style>

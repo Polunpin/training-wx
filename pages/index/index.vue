@@ -1,63 +1,105 @@
 <template>
-  <view class="container" v-if="userinfo">
-    <image
-        v-if="true"
-        src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/logo.png?sign=624ce5a1a14883bfe5d569fe5454cee9&t=1730479945"
-        class="logo"></image>
-    <image
-        v-else
-        src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/task.png?sign=235193151d2ec51b66905f457d84289c&t=1736369942"
-        class="logo"></image>
-
-    <view class="info-block">
-      <view class="title">{{ userinfo.stuName }}</view>
-      <view class="tag">
-        <view class="item">已预约：{{ userinfo.used }}小时</view>
-        <view class="item">待约课：{{ userinfo.lave }}小时</view>
-      </view>
-    </view>
-    <view class="list-box">
-      <view class="list-item" v-if="userinfo.id === 0">
-        <button class="btn" @click="jumpCustomerService"></button>
-        <image
-            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/kehu.png?sign=270644f53ab8cff63318b7e83613c257&t=1730479739"
-            class="img"></image>
-      </view>
-
-      <view class="list-item" >
-        <image
-            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/study.png?sign=fbb5f55a3d8528e06531094648a99ed6&t=1731692176"
-            class="img"
-            @click="jumpStudy"></image>
-      </view>
-
-      <view class="list-item">
-        <image
-            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/yuyue.png?sign=cc541147500b5fc84c4cadcaacc6caf7&t=1730479825"
-            class="img"
-            @click="jumpCourse"
-        ></image>
-      </view>
-
-      <view class="list-item">
-        <image
-            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/jilu.png?sign=8d735fd4bd1d7e3c1809142f99c47954&t=1730479715"
-            class="img"
-            @click="jumpRecord"
-        ></image>
-      </view>
-    </view>
-  </view>
+  <div class="index-container">
+    <div class="logo">
+      <image
+        src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/logo.png?sign=6ab433dd380e30fdb7e8b8e782a03f72&t=1740907791"
+        class="logo-img"></image>
+    </div>
+    <!-- 用户信息 -->
+    <div class="info-box">
+      <div class="shape">
+        <div class="first"></div>
+        <div class="second"></div>
+      </div>
+        <div class="info-bg info-border-raduis">
+          <div class="info-bg1 info-border-raduis">
+            <div class="info-content info-border-raduis">
+              <p class="content-name">{{userinfo.stuName}}</p> 
+              <div class="content-val">
+                <p class="val-title">安全行车指数</p>
+                <p class="val-count">06</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="moudle">
+      <!-- 当前进度 -->
+      <div class="module-current">
+        <div class="current-info">
+          <span class="info-title">当前进度：</span>
+          如何安全通过红绿灯?
+        </div>
+        <div class="current-btn">继续学习</div>
+      </div>
+      <!-- 模块列表 -->
+      <div class="moudle-list">
+        <!-- 前两项 -->
+        <div class="list-first-row">
+          <!-- 学习 -->
+          <div class="list-item" @click="jumpStudy">
+            <image
+              src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/icon-study.png?sign=2171d1dd675a5ff9c6e3c4d2593bf505&t=1740908577"
+              mode="scaleToFill"
+              class="item-logo logo-study"
+            />
+            <p class="item-title">学习</p>
+          </div>
+          <!-- 练习 -->
+          <div class="list-item even">
+            <image
+              src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/icon-exercise.png?sign=a98501336204a56314dbf3a565caf3bf&t=1740908630"
+              mode="scaleToFill"
+              class="item-logo logo-exercise"
+            />
+            <p class="item-title">练习</p>
+          </div>
+        </div>
+        <!-- 记录 -->
+        <div class="list-item odd">
+          <image
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/icon-record.png?sign=9995fd37a38a3a341b9c0b8a73dd48e3&t=1740908589"
+            mode="scaleToFill"
+            class="item-logo logo-record"
+          />
+          <p class="item-title">记录</p>
+        </div>
+        <!-- 挑战 -->
+        <div class="list-item even">
+          <image
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/icon-challenge.png?sign=df3b41a356683758303e42f546d4296a&t=1740908616"
+            mode="scaleToFill"
+            class="item-logo logo-challenge"
+          />
+          <p class="item-title">挑战</p>
+        </div>
+        <!-- 客服 -->
+        <div class="list-item odd" @click="jumpCustomerService">
+          <image
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/icon-customer.png?sign=2a61fd7f077c64103f50e22652a143e6&t=1740908602"
+            mode="scaleToFill"
+            class="item-logo logo-customer"
+          />
+          <p class="item-title">客服</p>
+        </div>
+        <!-- 奖励 -->
+        <div class="list-item even">
+          <image
+            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/icon-reward.png?sign=37235096514e2c84b5a1f0f054ab69a9&t=1740908565"
+            mode="scaleToFill"
+            class="item-logo logo-reward"
+          />
+          <p class="item-title">奖励</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 </template>
-
 <script>
-import {get} from "@/utils/request.js";
+import { get } from "@/utils/request.js";
 import {mapGetters} from "vuex";
-
 export default {
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(["userinfo"]),
   },
@@ -68,7 +110,7 @@ export default {
       this.$store.commit("setUserinfo", res);
     });
   },
-  methods: {
+  methods: { 
     //客服
     jumpCustomerService() {
       wx.openCustomerServiceChat({
@@ -85,152 +127,210 @@ export default {
 
     //学习
     jumpStudy() {
-      console.log("AAA");
       uni.navigateTo({
-        // url: "/pages/knowledge/drive-tips",
-		url: "/pages/studyView/studyIndex",
+		    url: "/pages/studyView/studyIndex"
       });
-    },
-
-    //预约
-    jumpCourse() {
-      if (this.userinfo.isAppointment) {
-        if (this.userinfo.trainerId === null) {
-          uni.showToast({
-            title: "客服分派教练中",
-            icon: "none",
-          });
-        } else if (this.userinfo.lave === 0) {
-          if (this.userinfo.used === 2) {
-            uni.showToast({
-              title: "请联系客服，购买正式课",
-              icon: "none",
-            });
-          } else {
-            uni.showToast({
-              title: "🚙 山川湖海，一路平安 👋🏻已结课",
-              icon: "none",
-            });
-          }
-        } else {
-          uni.navigateTo({
-            url: "/pages/formal/formal",
-          });
-        }
-      } else {
-        if (this.userinfo.id === 0) {
-          uni.showToast({
-            title: "联系客服，确认上课时间",
-            icon: "none",
-          });
-        } else {
-          uni.navigateTo({
-            url: "/pages/reservation/reservation",
-          });
-        }
-
-      }
-    },
-
-    //记录
-    jumpRecord() {
-      if (this.userinfo.isAppointment) {
-        uni.navigateTo({
-          url: "/pages/record/record",
-        });
-      } else {
-        uni.showToast({
-          title: "暂无预约记录",
-          icon: "none",
-        });
-      }
-    },
-  },
-};
-</script>
-
-<style lang="scss" scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 120rpx;
-  line-height: 1;
-
-  .logo {
-    width: 388rpx;
-    height: 180rpx;
-    margin: 80rpx auto 0;
-  }
-
-  .info-block {
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-top: 120rpx;
-    padding: 50rpx 400rpx 50rpx 50rpx;
-    background: #eaf5fa url("https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/"+
-		"images/fxp.png?sign=6ebde2db0fbd249637f9d1c3960bc624&t=1730479402") no-repeat right bottom;
-    background-size: 112rpx 112rpx;
-    border-top-left-radius: 15rpx;
-    border-bottom-left-radius: 15rpx;
-    box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1);
-    max-width: 85%;
-    white-space: nowrap;
-
-    .title {
-      margin-bottom: 30rpx;
-      color: #333333;
-      font-size: 40rpx;
-      font-weight: 500;
     }
-
-    .tag {
+  }
+}
+</script>
+<style lang="scss" scoped>
+.index-container {
+  font-family: "Yuanti TC";
+  .logo {
+    padding:  40rpx 0 0 40rpx;
+    .logo-img {
+      width: 526rpx;
+      height: 242rpx;
+      display: block;
+    }
+  }
+  
+  .info-box {
+    margin-top: -60rpx;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    .shape {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .first {
+        width: 80rpx;
+        height: 80rpx;
+        border-radius: 40rpx 0 0 40rpx;
+        background: rgba(92, 110, 128, 0.50);
+        box-shadow: -2px 4px 4px 0px rgba(0, 0, 0, 0.39);
+      }
+      .second {
+        width: 40rpx;
+        height: 80rpx;
+        background: rgba(92, 110, 128, 0.50);
+      }
+    }
+    .info-border-raduis {
+      border-top-left-radius: 160rpx;
+      border-bottom-left-radius: 120rpx;
+    }
+    .info-bg {
+      padding: 32rpx;
+      padding-right: 0;
+      background: #d9d9d9;
+      width: 80%;
+      box-shadow: 0 4rpx 20rpx 0 rgba(0, 0, 0, 0.25);
+      .info-bg1 {
+        background: #fff;
+      }
+      .info-content {
+        background: rgba(14, 176, 245, 0.07);
+        padding: 24rpx 60rpx 24rpx 120rpx;
+        box-shadow: 0 4rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .content-name {
+          font-size: 40rpx;
+          color: #333;
+        }
+        .content-val {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .val-title {
+            font-size: 24rpx;
+            color: rgba(51, 51, 51, 0.56);
+          }
+          .val-count {
+            font-family: 'MyFontPacifico';
+            font-size: 100rpx;
+            opacity: 0.66;
+            font-weight: 600;
+            line-height: 100rpx;
+            position: relative;
+            top: -10rpx;
+          }
+        }
+      }
+    }
+  }
+  .moudle {
+    padding: 66rpx 60rpx;
+    .module-current {
+      padding: 20rpx;
+      border-radius: 20rpx;
+      background: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 0 12rpx 0 #95CBF0;
       display: flex;
       align-items: center;
-      gap: 30rpx;
+      .current-info {
+        font-size: 26rpx;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
-      .item {
-        color: #333333;
-        font-size: 28rpx;
-        font-weight: 400;
-      }
-    }
-  }
-
-  .list-box {
-    display: flex;
-    flex-direction: column;
-    padding: 50rpx 28rpx 0;
-
-    .list-item {
-      position: relative;
-
-      .img {
-        width: 480rpx;
-        height: 200rpx;
-      }
-
-      .btn {
-        z-index: 10;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 480rpx;
-        height: 200rpx;
-        background: transparent;
-        background-size: 100% 100%;
-        border: none;
-
-        &::after {
-          border: none;
+        .info-title {
+          font-weight: 600;
         }
       }
-
-      //功能图标右对齐
-      &:nth-child(2),
-      &:nth-child(4){
+      .current-btn {
+        flex-shrink: 0;
+        font-size: 32rpx;
+        margin-left: 10rpx;
+      }
+    }
+    .moudle-list {
+      margin-top: 48rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+      .list-item {
         display: flex;
-        justify-content: flex-end;
-        margin: 50rpx 0;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-top: 8rpx;
+        .item-logo {
+          width: 108rpx;
+          height: 108rpx;
+          position: absolute;
+          right: 20rpx;
+          bottom: 20rpx;
+          &.logo-record {
+            width: 100rpx;
+            height: 82rpx;
+          }
+          &.logo-challenge {
+            width: 96rpx;
+            height: 96rpx;
+          }
+          &.logo-customer {
+            width: 84rpx;
+            height: 84rpx;
+          }
+          &.logo-reward {
+            width: 84rpx;
+            height: 84rpx;
+          }
+        }
+        .item-title {
+          font-size: 32rpx;
+          position: absolute;
+          font-weight: 600;
+          top: 30rpx;
+          left: 30rpx;
+        }
+        &.even {
+          width: 274rpx;
+          height: 180rpx;
+          background-image: url('https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/module-right.png?sign=8b4c46dc0046f4cd5013ee83b2952c76&t=1740908972');
+          background-size: 100% 170rpx;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        &.odd {
+          width: 340rpx;
+          height: 180rpx;
+          background-image: url('https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/module-left.png?sign=151b6516fd6688bf8c3ad7a2a4bc74d3&t=1740909094');
+          background-size: 100% 170rpx;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+       
+      }
+      .list-first-row {
+        position: relative;
+        height: 368rpx;
+        width: 100%;
+        .list-item { 
+          margin: auto;
+          &:first-child {
+            width: 100%;
+            height: 368rpx;
+            background-image: url('https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/module-1.png?sign=f82cae40000bafe9cb466e5734904047&t=1740908737');
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            .item-logo {
+              width: 274rpx;
+              height: 200rpx;
+              left: 40rpx;
+              bottom: 80rpx;
+            }
+            .item-title {
+              top: 30rpx;
+              right: 30rpx;
+              left: auto;
+            }
+          }
+          &.even {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+          }
+        }
       }
     }
   }

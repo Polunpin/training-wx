@@ -1,1 +1,1 @@
-<view class="progress-bar data-v-c516c48a"><view class="progress data-v-c516c48a" style="{{'width:'+(percentage+'%')+';'+('color:'+(color)+';')}}"></view><text class="progress-text data-v-c516c48a">{{text}}</text></view>
+<view class="progress-bar data-v-c516c48a"><view class="progress data-v-c516c48a" style="{{'width:'+(percentage+'%')+';'+('background-color:'+(color)+';')}}"></view><text class="progress-text data-v-c516c48a">{{text}}</text></view>
