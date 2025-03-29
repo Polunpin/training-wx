@@ -1,29 +1,46 @@
 {
-    "description": "项目配置文件。",
-    "packOptions": {
-        "ignore": [],
-        "include": []
-    },
-    "setting": {
-        "urlCheck": false,
-        "es6": true,
-        "postcss": true,
-        "minified": true,
-        "newFeature": true,
-        "bigPackageSizeSupport": true,
-        "babelSetting": {
-            "ignore": [],
-            "disablePlugins": [],
-            "outputPath": ""
-        }
-    },
-    "compileType": "miniprogram",
-    "libVersion": "2.25.3",
-    "appid": "wx6f4801d7ecbc2a4c",
-    "projectname": "training-wx",
-    "condition": {},
-    "editorSetting": {
-        "tabIndent": "insertSpaces",
-        "tabSize": 4
+  "description": "项目配置文件。",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "bigPackageSizeSupport": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
     }
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.7.11",
+  "appid": "wx5745b3f0a911e8d8",
+  "projectname": "training-wx",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": []
+    }
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
 }

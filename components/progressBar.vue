@@ -2,9 +2,9 @@
 <template>
   <view class="progress-bar">
     <!-- 进度条容器 -->
-    <view class="progress" :style="{ width: `${percentage}%`,color:color }"></view>
+    <view class="progress" :style="{ width: `${percentage}%`,backgroundColor:color }"></view>
     <!-- 显示进度百分比的文本 -->
-    <text class="progress-text">{{ text }}</text>
+    <text class="progress-text" v-if="text">{{ text }}</text>
   </view>
 </template>
 <script>
@@ -33,18 +33,21 @@
 			},
 			text:{
 				type:String,
-				default:'1/1'
+				default:''
 			}
 		  }
 	}
 </script>
 
 <style scoped>
+	* {
+		font-family: 'PingFang sc', serif;
+	}
 .progress-bar {
-	height: 20rpx;
+	height: 36rpx;
   width: 95%;
   background-color: #F3F3F3;
-  border-radius: 10rpx;
+  border-radius: 18rpx;
   overflow: hidden;
   position: relative; /* 为了让子元素可以相对于它定位 */
   display: flex;
@@ -55,6 +58,7 @@
 .progress {
   height: 100%;
   background-color: #4caf50;
+  border-radius: 18rpx;
   position: absolute;
   left: 0;
   top: 0;
@@ -64,6 +68,7 @@
 .progress-text {
   color: #1C1916;
   z-index: 1; /* 确保文字显示在进度条之上 */
-  font-size:20rpx;
+  font-size:24rpx;
+  font-weight: 600;
 }
 </style>

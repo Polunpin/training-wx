@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "navigationBarBackgroundColor": "#ffffff",
-  "usingComponents": {
-    "uv-rate": "/uni_modules/uv-rate/components/uv-rate/uv-rate"
-  }
-}

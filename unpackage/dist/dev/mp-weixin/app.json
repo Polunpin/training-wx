@@ -1,16 +1,35 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/reservation/reservation",
-    "pages/record/record",
-    "pages/formal/formal",
-    "pages/submit/success/success",
-    "pages/submit/fail/fail",
-    "pages/knowledge/drive-tips",
+    "pages/index/guide",
     "pages/studyView/studyIndex",
     "pages/studyView/studyInfo"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "pages/exercise",
+      "pages": [
+        "index",
+        "report",
+        "record",
+        "running/running"
+      ]
+    },
+    {
+      "root": "pages/reward",
+      "pages": [
+        "list",
+        "detail",
+        "record"
+      ]
+    },
+    {
+      "root": "pages/challenge",
+      "pages": [
+        "index"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "护安行",
@@ -18,9 +37,15 @@
     "backgroundColor": "#F8F8F8"
   },
   "lazyCodeLoading": "requiredComponents",
+  "requiredBackgroundModes": [
+    "location"
+  ],
   "requiredPrivateInfos": [
     "chooseLocation",
-    "getLocation"
+    "getLocation",
+    "startLocationUpdate",
+    "onLocationChange",
+    "startLocationUpdateBackground"
   ],
   "permission": {
     "scope.userLocation": {

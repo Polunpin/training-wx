@@ -1,1 +1,0 @@
-<view><view class="container"><view><image class="img" src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/submit-0.png?sign=3934fcaa532c2bd463a400033d4e55f6&t=1730479870" mode></image></view></view><view class="submit-box"><button class="btn" type="primary" data-event-opts="{{[['tap',[['jumpKehu',['$event']]]]]}}" bindtap="__e">联系客服</button></view></view>

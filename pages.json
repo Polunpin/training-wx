@@ -10,60 +10,97 @@
 			}
 		},
 		{
-			"path": "pages/reservation/reservation",
+			"path": "pages/index/guide",
 			"style": {
 				"navigationBarTitleText": "",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
-		},
-		{
-			"path": "pages/record/record",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
-		},
-		{
-			"path": "pages/formal/formal",
-			"style": {
-				"navigationBarTitleText": "",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
-		},
-		{
-			"path": "pages/submit/success/success",
-			"style": {
-				"navigationBarTitleText": "预约成功",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
-		},
-		{
-			"path": "pages/submit/fail/fail",
-			"style": {
-				"navigationBarTitleText": "预约失败",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
-		},
-		{
-			"path": "pages/knowledge/drive-tips",
-			"style": {
-				"navigationBarTitleText": "驾驶宝典",
 				"navigationBarBackgroundColor": "#ffffff"
 			}
 		},
 		{
 			"path": "pages/studyView/studyIndex",
 			"style": {
-				"navigationBarTitleText": "1",
+				"navigationBarTitleText": "学习",
 				"navigationBarBackgroundColor": "#ffffff"
 			}
 		},
 		{
 			"path": "pages/studyView/studyInfo",
 			"style": {
-				"navigationBarTitleText": "2",
+				"navigationBarTitleText": "",
 				"navigationBarBackgroundColor": "#ffffff"
 			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "pages/exercise",
+			"pages": [
+				{
+					"path": "index",
+					"style": {
+						"navigationBarTitleText": "练习",
+						"navigationBarBackgroundColor": "#ffffff",
+						"disableScroll": true
+					}
+				},
+				{
+					"path": "report",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "record",
+					"style": {
+						"navigationBarTitleText": "记录",
+						"navigationBarBackgroundColor": "#ffffff",
+						"disableScroll": true
+					}
+				},
+				{
+					"path": "running/running",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "",
+						"navigationBarBackgroundColor": "#ffffff"
+						
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/reward",
+			"pages": [
+				{
+					"path": "list",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "record",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
+		},
+		{
+			"root": "pages/challenge",
+			"pages": [
+				{
+					"path": "index",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
 		}
 	],
 	"globalStyle": {

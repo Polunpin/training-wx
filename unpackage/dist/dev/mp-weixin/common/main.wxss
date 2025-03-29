@@ -62,39 +62,8 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*每个页面公共css */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
 

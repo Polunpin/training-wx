@@ -1,9 +1,7 @@
 {
-  "navigationBarTitleText": "1",
+  "navigationBarTitleText": "学习",
   "navigationBarBackgroundColor": "#ffffff",
   "usingComponents": {
-    "z-swiper": "/node-modules/@zebra-ui/swiper/components/z-swiper/z-swiper",
-    "z-swiper-item": "/node-modules/@zebra-ui/swiper/components/z-swiper-item/z-swiper-item",
     "progress-bar": "/components/progressBar"
   }
 }

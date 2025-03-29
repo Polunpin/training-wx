@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "@zebra-ui/swiper": "^2.2.8"
+    "@zebra-ui/swiper": "^2.2.8",
+    "dayjs": "^1.11.13",
+    "vuex": "^4.1.0"
   }
 }
