@@ -1,0 +1,106 @@
+.data-v-23abe7ba ::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+ /* 兼容Firefox */
+.data-v-23abe7ba::-webkit-scrollbar {
+  display: none;
+}
+ /* 兼容IE和Edge */
+.study-index-wrap.data-v-23abe7ba {
+  padding-top: 100rpx;
+}
+.swiper-box.data-v-23abe7ba {
+  height: 420rpx;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100vw;
+}
+.swiper-box .main.data-v-23abe7ba {
+  height: 100%;
+  width: 1054rpx;
+  padding-left: 50rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 50rpx;
+}
+.swiper-box .main .swiper-item.data-v-23abe7ba {
+  width: 188rpx;
+  height: 254rpx;
+  flex-shrink: 0;
+  /* 元素不缩小 */
+}
+.swiper-box .main .swiper-item.data-v-23abe7ba:last-child {
+  margin-right: 50rpx;
+}
+.swiper-box .main .bigImg.data-v-23abe7ba {
+  width: 290rpx;
+  height: 400rpx;
+}
+.swiper-box .main .image.data-v-23abe7ba {
+  width: 100%;
+  height: 100%;
+}
+.catalog.data-v-23abe7ba {
+  padding: 100rpx 66rpx;
+}
+.catalog .title.data-v-23abe7ba {
+  font-size: 56rpx;
+  font-weight: 700;
+}
+.catalog .content-box.data-v-23abe7ba {
+  padding: 0 20rpx;
+}
+.catalog .content-box .content-item.data-v-23abe7ba {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 0 30rpx;
+}
+.catalog .content-box .content-item .index.data-v-23abe7ba {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 16rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  margin-right: 30rpx;
+  font-weight: 600;
+  flex-shrink: 0;
+  position: relative;
+  top: 10rpx;
+  font-size: 40rpx;
+}
+.catalog .content-box .content-item .message.data-v-23abe7ba {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  position: relative;
+}
+.catalog .content-box .content-item .message.data-v-23abe7ba::after {
+  content: '';
+  position: absolute;
+  bottom: -30rpx;
+  left: -50%;
+  display: block;
+  height: 1px;
+  width: 200%;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+}
+.catalog .content-box .content-item .message .text.data-v-23abe7ba {
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+  color: #333;
+}
+.catalog .empty.data-v-23abe7ba {
+  padding: 40rpx;
+  text-align: center;
+}
+

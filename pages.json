@@ -1,6 +1,8 @@
 {
-	"pages": [
-		{
+	"easycom": {
+		"^z-(.*)": "@zebra-ui/swiper/components/z-$1/z-$1.vue"
+	},
+	"pages": [{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "",
@@ -8,42 +10,97 @@
 			}
 		},
 		{
-			"path": "pages/reservation/reservation",
+			"path": "pages/index/guide",
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationBarBackgroundColor": "#ffffff"
 			}
 		},
 		{
-			"path": "pages/record/record",
+			"path": "pages/studyView/studyIndex",
+			"style": {
+				"navigationBarTitleText": "学习",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/studyView/studyInfo",
 			"style": {
 				"navigationBarTitleText": "",
 				"navigationBarBackgroundColor": "#ffffff"
 			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "pages/exercise",
+			"pages": [
+				{
+					"path": "index",
+					"style": {
+						"navigationBarTitleText": "练习",
+						"navigationBarBackgroundColor": "#ffffff",
+						"disableScroll": true
+					}
+				},
+				{
+					"path": "report",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "record",
+					"style": {
+						"navigationBarTitleText": "记录",
+						"navigationBarBackgroundColor": "#ffffff",
+						"disableScroll": true
+					}
+				},
+				{
+					"path": "running/running",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTitleText": "",
+						"navigationBarBackgroundColor": "#ffffff"
+						
+					}
+				}
+			]
 		},
 		{
-			"path" : "pages/formal/formal",
-			"style" :
-			{
-				"navigationBarTitleText" : "",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
+			"root": "pages/reward",
+			"pages": [
+				{
+					"path": "list",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "detail",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "record",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
 		},
 		{
-			"path" : "pages/submit/success/success",
-			"style" : 
-			{
-				"navigationBarTitleText" : "预约成功",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
-		},
-		{
-			"path" : "pages/submit/fail/fail",
-			"style" : 
-			{
-				"navigationBarTitleText" : "预约失败",
-				"navigationBarBackgroundColor": "#ffffff"
-			}
+			"root": "pages/challenge",
+			"pages": [
+				{
+					"path": "index",
+					"style": {
+						"navigationStyle": "custom"
+					}
+				}
+			]
 		}
 	],
 	"globalStyle": {

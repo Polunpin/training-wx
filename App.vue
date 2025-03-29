@@ -1,11 +1,9 @@
 <script>
-	import {
-		get,
-		post
-	} from '@/utils/request.js'
+	import {RunningService} from './pages/exercise/running/js/RunningService'
 	export default {
-		onLaunch: async function() {
-			const unionid = uni.getStorageSync('unionid');
+		onLaunch: async function(options) {
+			RunningService.shared.reset()
+			RunningService.shared.timerStop()
 			const updateManager = wx.getUpdateManager();
 			updateManager.onUpdateReady(function () {
 			  wx.showModal({
@@ -19,10 +17,36 @@
 			    }
 			  })
 			})
-			if (!unionid) {
-				await this.wxLogin()
-			}
-			this.getPersonalInfo()
+			wx.getStorage({
+				key: 'hasLaunched',
+				success: function(res){
+					// 如果获取到标记，说明不是首次访问
+					// 检查是否有分享路径
+					if (options.path) {
+						// 如果有分享路径，直接跳转到分享的页面
+						wx.redirectTo({
+							url: '/' + options.path
+						})
+					} else {
+						// 如果没有分享路径，跳转到主页
+						wx.redirectTo({
+							url: '/pages/index/index'
+						})
+					}
+				},
+				fail: function(){
+					// 如果没有获取到标记，说明是首次访问，跳转到提示页
+					wx.redirectTo({
+						url: '/pages/index/guide'
+					})
+					// 在本地存储中设置标记，表示已经访问过
+					wx.setStorage({
+						key: 'hasLaunched',
+						data: 'true'
+					})
+				}
+			})
+
 			console.log('App Launch')
 		},
 		onShow: function() {
@@ -31,70 +55,15 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
-		methods: {
-			//获取个人信息
-			getPersonalInfo() {
-				get('/lessonManagement/personalInfo', {
-					unionId: uni.getStorageSync('unionid')
-				}).then(res => {
-					this.$store.commit('setUserinfo', res)
-				})
-			},
-			wxLogin() {
-				const _this = this
-				return new Promise((resovle, reject) => {
-					wx.login({
-						success(res) {
-							if (res.code) {
-								get('/weCom/jsCode2session', {
-									jsCode: res.code
-								}).then(res => {
-									const data = JSON.parse(res)
-									if (data.unionid) {
-										uni.setStorageSync('openid', data.openid)
-										uni.setStorageSync('unionid', data.unionid)
-										resovle(data.unionid)
-										console.log('成功获取unionid:', data.unionid);
-									} else {
-										reject('获取unionid失败')
-										console.error('获取unionid失败:', data);
-									}
-								})
-								// 	wx.request({
-								// 		url: 'https://api.weixin.qq.com/sns/jscode2session',
-								// 		data: {
-								// 			appid: 'wx5745b3f0a911e8d8',
-								// 			secret: '9a4e5d01d729f1b9951b7d37a3375da0',
-								// 			js_code: res.code,
-								// 			grant_type: 'authorization_code'
-								// 		},
-								// 		success(res) {
-								// 			if (res.data.unionid) {
-								// 				uni.setStorageSync('unionid', res.data.unionid)
-								// 				resovle(res.data.unionid)
-								// 				console.log('成功获取unionid:', res.data.unionid);
-								// 			} else {
-								// 				reject(res.data.errmsg)
-								// 				console.error('获取unionid失败:', res.data.errmsg);
-								// 			}
-								// 		},
-								// 		fail(err) {
-								// 			reject(err)
-								// 			console.error('请求失败:', err.errMsg);
-								// 		}
-								// 	});
-								// } else {
-								// 	console.log('登录失败！' + res.errMsg);
-							}
-						}
-					});
-				})
 
-			}
+		methods: {
 		}
 	}
 </script>
 
 <style>
 	/*每个页面公共css */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
 </style>

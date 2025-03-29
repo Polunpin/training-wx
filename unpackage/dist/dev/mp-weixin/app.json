@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/guide",
+    "pages/studyView/studyIndex",
+    "pages/studyView/studyInfo"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/exercise",
+      "pages": [
+        "index",
+        "report",
+        "record",
+        "running/running"
+      ]
+    },
+    {
+      "root": "pages/reward",
+      "pages": [
+        "list",
+        "detail",
+        "record"
+      ]
+    },
+    {
+      "root": "pages/challenge",
+      "pages": [
+        "index"
+      ]
+    }
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "护安行",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "requiredBackgroundModes": [
+    "location"
+  ],
+  "requiredPrivateInfos": [
+    "chooseLocation",
+    "getLocation",
+    "startLocationUpdate",
+    "onLocationChange",
+    "startLocationUpdateBackground"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {}
+}

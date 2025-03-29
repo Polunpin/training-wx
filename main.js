@@ -3,6 +3,10 @@ import store from './store';
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'
+import mixins from './mixin/mixin'
+import cloudService from './api/cloudService'
+Vue.mixin(mixins)
+Vue.prototype.$cloudService = cloudService
 Vue.config.productionTip = false
 App.mpType = 'app'
 const app = new Vue({
@@ -22,4 +26,6 @@ export function createApp() {
 		app
 	}
 }
+
+
 // #endif

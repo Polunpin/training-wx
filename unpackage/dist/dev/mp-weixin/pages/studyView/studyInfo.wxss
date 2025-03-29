@@ -1,0 +1,156 @@
+.data-v-2b06e926::-webkit-scrollbar {
+  display: none;
+  /* 隐藏WebKit浏览器的滚动条 */
+}
+.data-v-2b06e926 ::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+/* 兼容Firefox */
+/* 兼容IE和Edge */
+.study-info-wrap.data-v-2b06e926 {
+  height: 100vh;
+  overflow: scroll;
+}
+.img.data-v-2b06e926 {
+  width: 100%;
+  min-height: 400rpx;
+}
+.img .imgItem.data-v-2b06e926 {
+  width: 100%;
+  height: 100%;
+}
+.fixed-box.data-v-2b06e926 {
+  position: fixed;
+  bottom: 0rpx;
+  padding-left: 66rpx;
+  padding-right: 66rpx;
+  padding-top: 24rpx;
+  padding-bottom: calc(24rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+}
+.fixed-box .fixed-item.data-v-2b06e926 {
+  height: 100%;
+}
+.fixed-box .btn.data-v-2b06e926 {
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 200rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.fixed-box .one.data-v-2b06e926 {
+  margin-right: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-size: 24rpx;
+  color: #333;
+}
+.fixed-box .one .icon-tiwen.data-v-2b06e926 {
+  width: 48rpx;
+  height: 48rpx;
+  margin-bottom: 4rpx;
+}
+.fixed-box .learning-btn.data-v-2b06e926 {
+  background-color: #5ab95b;
+}
+.fixed-box .learning-btn-other.data-v-2b06e926 {
+  background: rgba(125, 134, 125, 0.45);
+}
+.content .tabOne.data-v-2b06e926 {
+  font-size: 40rpx;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.content .tabOne .tabOne-item.data-v-2b06e926 {
+  display: inline-block;
+  padding: 16rpx 40rpx;
+  white-space: nowrap;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+.content .tabOne .pitch-tabOne.data-v-2b06e926 {
+  margin-top: 0;
+  border-radius: 30rpx 30rpx 0 30rpx;
+  font-size: 34rpx;
+  color: #4882C0;
+  background-color: #fff;
+  position: relative;
+}
+.content .info.data-v-2b06e926 {
+  padding: 30rpx 26rpx 60rpx;
+  margin: 0 auto;
+  padding-bottom: calc(184rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(184rpx + env(safe-area-inset-bottom));
+}
+.content .info .tabTwo.data-v-2b06e926 {
+  display: flex;
+  flex-wrap: wrap;
+  /* 以下属性可根据需要调整，用于设置弹性项目之间的间距 */
+  gap: 20rpx;
+  font-size: 25rpx;
+}
+.content .info .tabTwo .tabTwo-item.data-v-2b06e926 {
+  padding: 12rpx 20rpx;
+  border: 2rpx solid #F8F8F8;
+  background: #F8F8F8;
+  color: #1D1E22;
+  border-radius: 4rpx;
+}
+.content .info .tabTwo .active-click.data-v-2b06e926 {
+  color: #4882C0;
+  border-radius: 4rpx;
+  border: 2rpx solid #4882C0;
+  background: rgba(72, 130, 192, 0.1);
+}
+.content .info .tabTwo .active-status.data-v-2b06e926 {
+  color: #1FB150;
+  border-radius: 4rpx;
+  border: 2rpx solid #1FB150;
+  background: rgba(31, 177, 80, 0.1);
+}
+.content .info .tabTwo .active-status-click.data-v-2b06e926 {
+  color: #1FB150;
+  border-radius: 4rpx;
+  border: 1px solid #1FB150;
+  background: rgba(27, 155, 71, 0.2);
+}
+.content .info .explain.data-v-2b06e926 {
+  padding: 0 10rpx;
+  margin-top: 50rpx;
+}
+.content .info .explain .title.data-v-2b06e926 {
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: 600;
+  line-height: 60rpx;
+}
+.content .info .property.data-v-2b06e926 {
+  padding: 0 10rpx;
+  margin-top: 64rpx;
+}
+.content .info .property .property-item.data-v-2b06e926 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50rpx;
+  font-size: 28rpx;
+  color: #1d1e22;
+}
+

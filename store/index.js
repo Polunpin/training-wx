@@ -1,6 +1,7 @@
 // store/index.js
 import Vue from 'vue';
 import Vuex from 'vuex';
+import api from '../api/cloudService'
 
 Vue.use(Vuex);
 const store = new Vuex.Store({
@@ -14,6 +15,14 @@ const store = new Vuex.Store({
 		setUserinfo(state, userinfo) {
 			state.userinfo = userinfo
 			uni.setStorageSync('userinfo', userinfo)
+		}
+	},
+	actions: {
+		async initUserinfo({ commit }) {
+			const res = await api.call({
+				path:'/users/info'
+			})
+			commit('setUserinfo', res.data)
 		}
 	}
 });
