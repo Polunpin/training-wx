@@ -139,7 +139,7 @@ export default{
     width: 100%;
     bottom: 0;
     left: 0;
-    border-radius: 32rpx 32rpx 0rpx 0rpx;
+    border-radius: 32rpx 32rpx 0 0;
     overflow: hidden;
     background: #fff;
     box-sizing: border-box;

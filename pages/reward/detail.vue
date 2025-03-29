@@ -148,8 +148,8 @@ export default {
         align-items: center;
         position: relative;
         width: 100%;
-        left: 0rpx;
-        right: 0rpx;
+        left: 0;
+        right: 0;
         .circle {
           width: 96rpx;
           height: 96rpx;

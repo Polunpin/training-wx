@@ -10001,8 +10001,6 @@ var RunningService = /*#__PURE__*/function (_TimerService) {
                   altitude: location.altitude
                 });
                 _EventBus.eventBus.emit('points', this.points);
-                // this.calorie = TrackUtil.calculateCaloriesBurned(70, this.distance, this.duration)
-                // eventBus.emit('calorie', this.calorie)
               case 19:
               case "end":
                 return _context.stop();
@@ -10031,9 +10029,6 @@ var RunningService = /*#__PURE__*/function (_TimerService) {
     value: function start(callback) {
       var _this2 = this;
       console.log('点击开始');
-      // this.status = 'start'
-      // this.timerStart()
-      // eventBus.emit('status', 'start')
       wx.startLocationUpdateBackground({
         success: function success(res) {
           console.log('startLocationUpdateBackground 用户开启使用小程序期间位置权限:', res);
@@ -10261,14 +10256,6 @@ var RunningService = /*#__PURE__*/function (_TimerService) {
                 this.reset();
                 this.timerStop();
                 callback && callback(res.data);
-
-                // if (res.success && res.result?.id) {
-                //     this.reset()
-
-                //     this.timerStop()
-                // } else {
-                //     uni.showToast({title: '上传失败', icon: 'none'})
-                // }
                 _context4.next = 25;
                 break;
               case 22:
@@ -10310,8 +10297,6 @@ var RunningService = /*#__PURE__*/function (_TimerService) {
       _EventBus.eventBus.emit('points', this.points);
       this.distance = 0;
       _EventBus.eventBus.emit('distance', this.distance);
-      // this.calorie = 0
-      // eventBus.emit('calorie', this.calorie)
     }
   }]);
   return RunningService;
@@ -12806,8 +12791,7 @@ exports.default = void 0;
 var _default = {
   computed: {
     headerTop: function headerTop() {
-      var header = wx.getMenuButtonBoundingClientRect();
-      return header;
+      return wx.getMenuButtonBoundingClientRect();
     }
   },
   methods: {

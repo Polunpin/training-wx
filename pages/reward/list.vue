@@ -3,7 +3,7 @@
     <!-- Header -->
     <Header :headerInfo="{title: '奖励'}" />
     <!-- 滚动区域 -->
-    <scroll-view class="page-info" scroll-y :style="{height: `calc(100% - ${headerTop.height + headerTop.top}px)`}" lower-threshold="100">
+    <scroll-view class="page-info" :style="{height: `calc(100% - ${headerTop.height + headerTop.top}px)`}" lower-threshold="100">
       <div class="my-coin">
         <div class="coin-left">
           <text class="count">{{gold}}</text>
@@ -30,9 +30,6 @@
           <div class="item-count">
             金币:{{item.exchangeCondition}}
           </div>
-          <!-- <div class="item-mask" v-if="item.isExchange">
-            已兑换
-          </div> -->
         </div>
      </div>
     </scroll-view>
@@ -79,15 +76,11 @@ export default {
     toDetail(id) {
       uni.navigateTo({ url: `/pages/reward/detail?id=${id}&type=list`})
     },
-    // loadMore () {
-    //   console.log(11)
-    // }
   },
 }
 </script>
 <style lang="scss" scoped>
 .reward-list-wrap {
-  // background: linear-gradient(-220deg,rgba(180, 165, 204, 1)1%,#f8f8f8,rgb(240, 237, 246), #f8f8f8);
   background-image: url('https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/reward/reward-bg.png?sign=42b81e38f300a1b5299caa072ceb50df&t=1743071355');
   background-color: #F8F8F8;
   background-size: 100% 600rpx;
@@ -139,8 +132,6 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: -24rpx;
     padding:0 40rpx 40rpx;
     .list-item {
       width: calc(50% - 12rpx);

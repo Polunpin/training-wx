@@ -202,7 +202,7 @@ export default {
         width: 66%;
         border: 1px solid #fff;
         border-bottom: 0;
-        border-radius: 40rpx 40rpx 0rpx 0rpx;
+        border-radius: 40rpx 40rpx 0 0;
         margin-bottom: -4rpx;
         position: relative;
         transform: perspective(30rpx) rotateX(2deg);

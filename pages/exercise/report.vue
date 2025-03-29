@@ -15,7 +15,6 @@
               <text class="date">{{detailInfo.consumptionTime}}</text>
             </div>
           </div>
-          <!-- <div class="info-count"><text>{{detailInfo.distance}}</text>公里</div> -->
         </div>
         <!-- 记录图 -->
         <div class="base-map">
@@ -107,8 +106,6 @@ export default {
       pagetype: '',
       id: 0,
       showSummarizePopup: false,
-      // latitude: 22.683619,
-      // longitude: 110.201161,
       headerInfo: {},
       detailInfo: null,
       pageLoading: true,
@@ -211,7 +208,6 @@ export default {
         padding: 32rpx 26rpx;
         .info-box {
           display: flex;
-          // justify-content: space-between;
           align-items: center;
           .title-icon {
             width: 70rpx;
@@ -328,11 +324,7 @@ export default {
     .bottom {
       box-sizing: border-box;
       width: 100%;
-      padding-left: 32rpx;
-      padding-right: 32rpx;
-      padding-top: 16rpx;
-      padding-bottom: calc(24rpx + constant(safe-area-inset-bottom));
-      padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+      padding: 16rpx 32rpx calc(24rpx + env(safe-area-inset-bottom));
       .bottom-btn {
         width: 100%;
         box-sizing: border-box;
@@ -353,7 +345,7 @@ export default {
   width: 100%;
   bottom: 0;
   left: 0;
-  border-radius: 32rpx 32rpx 0rpx 0rpx;
+  border-radius: 32rpx 32rpx 0 0;
   overflow: hidden;
   background: #fff;
   box-sizing: border-box;

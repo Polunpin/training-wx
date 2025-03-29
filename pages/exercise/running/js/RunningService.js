@@ -1,6 +1,5 @@
 import {eventBus} from "./EventBus";
 import {TimerService} from "./TimerService";
-// import {navTo, safeBack, toHome} from "./Navigation";
 import {TrackUtil} from "./TrackUtil";
 import api from '../../../../api/cloudService'
 export class RunningService extends TimerService {
@@ -58,8 +57,6 @@ export class RunningService extends TimerService {
             altitude: location.altitude
         })
         eventBus.emit('points', this.points)
-        // this.calorie = TrackUtil.calculateCaloriesBurned(70, this.distance, this.duration)
-        // eventBus.emit('calorie', this.calorie)
     }
     confrimStart () {
         // this.timerStop();
@@ -72,9 +69,6 @@ export class RunningService extends TimerService {
     }
     start(callback) {
         console.log('点击开始')
-        // this.status = 'start'
-        // this.timerStart()
-        // eventBus.emit('status', 'start')
         wx.startLocationUpdateBackground({
             success: res => {
                 console.log('startLocationUpdateBackground 用户开启使用小程序期间位置权限:', res)
@@ -240,13 +234,6 @@ export class RunningService extends TimerService {
             this.timerStop()
             callback && callback(res.data)
 
-            // if (res.success && res.result?.id) {
-            //     this.reset()
-                
-            //     this.timerStop()
-            // } else {
-            //     uni.showToast({title: '上传失败', icon: 'none'})
-            // }
         } catch (e) {
             console.log('轨迹生成或保存错误', e)
         } finally {
@@ -270,7 +257,5 @@ export class RunningService extends TimerService {
         eventBus.emit('points', this.points)
         this.distance = 0
         eventBus.emit('distance', this.distance)
-        // this.calorie = 0
-        // eventBus.emit('calorie', this.calorie)
     }
 }
