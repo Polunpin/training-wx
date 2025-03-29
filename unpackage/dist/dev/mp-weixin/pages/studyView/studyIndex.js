@@ -202,7 +202,7 @@ var _default = {
     color: function color() {
       var _this = this;
       return this.imgList.find(function (item) {
-        return item.level == _this.pitchLevel;
+        return item.level === _this.pitchLevel;
       }).color;
     }
   }, (0, _vuex.mapGetters)(["userinfo"])),
@@ -271,21 +271,7 @@ var _default = {
                   item.per = Math.floor(item.learnCount / item.knowledgeSum * 100);
                   return item;
                 });
-                console.log(_this3.list, 'listlist');
-                // let that = this
-                // this.list = []
-                // post("/knowledge/knowledgeListByFirst", {
-                // 	"studentId": that.studentId,
-                // 	"firstLevel": pitchLevel
-                // }).then((res) => {
-                // 	this.list = res.knowledgeList.map(item => {
-                // 		item.text = item.learnCount + '/' + item.knowledgeSum
-                // 		item.per = Math.floor((item.learnCount / item.knowledgeSum) * 100)
-                // 		return item
-                // 	})
-                // 	this.pageLoading = true
-                // });
-              case 7:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -301,10 +287,10 @@ var _default = {
         "中级": '初级',
         "高级": '中级'
       };
-      if (keyMap[this.pitchLevel] == '') {
+      if (keyMap[this.pitchLevel] === '') {
         return true;
       }
-      return new Promise(function (resolve, reject) {
+      return new Promise(function (resolve) {
         _this4.$cloudService.call({
           path: '/knowledgeLibrary/listByLevel1Dir',
           method: 'POST',
@@ -314,7 +300,7 @@ var _default = {
           }
         }).then(function (res) {
           resolve(res.data.every(function (item) {
-            return item.knowledgeSum == item.learnCount;
+            return item.knowledgeSum === item.learnCount;
           }));
         });
       });
@@ -334,7 +320,7 @@ var _default = {
                   break;
                 }
                 uni.showToast({
-                  title: '请先完成上一阶段练习',
+                  title: '请先完成上一阶段学习',
                   icon: 'none'
                 });
                 return _context4.abrupt("return");

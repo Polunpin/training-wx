@@ -4,9 +4,9 @@
 			<image :src="infoObj.imageUrl" alt="图片" class='imgItem' mode="widthFix"></image>
 		</view>
 		<view class="content">
-			<scroll-view class="tabOne" scroll-x>
+			<scroll-view class="tabOne">
 				<view class="tabOne-item" v-for="(item,index) in detailKeys" :key="index" @click="changeTabOne(index)"
-					:class="pitchIndex==index? 'pitch-tabOne' :''">
+					:class="pitchIndex===index? 'pitch-tabOne' :''">
 					{{item}}
 				</view>
 			</scroll-view>
@@ -15,9 +15,9 @@
 					<view class="tabTwo-item " v-for="(item,index) in fourLevel" :key="index"
 						@click="changeTabTwo(pitchIndex, index)" 
 						:class="{
-							'active-click': picthFourIndex[pitchIndex]==index, 
+							'active-click': picthFourIndex[pitchIndex]===index,
 							'active-status': Number(item.learningStatus) === 2,
-							'active-status-click': picthFourIndex[pitchIndex]==index && Number(item.learningStatus) === 2
+							'active-status-click': picthFourIndex[pitchIndex]===index && Number(item.learningStatus) === 2
 						}"
 					>
 						{{item.level4Dir}}
@@ -44,15 +44,6 @@
 			<view class="fixed-item  btn learning-btn" :class="{'learning-btn-other': Number(infoObj.learningStatus) === 2}" @click="changeStatus">
 				{{Number(infoObj.learningStatus) === 2 ? '我已掌握' : '我学会了'}}
 			</view>
-			<!-- <view class="fixed-item three btn" @click="changeStatus('没懂')">
-				<view class="bigText">
-					没懂
-				</view>
-				<view class="smallText">
-					先记录下来
-				</view>
-			</view> -->
-
 		</view>
 	</view>
 </template>
@@ -127,7 +118,6 @@
 					method: 'POST',
 					data: {
 						"level2Dir": this.level2Dir,
-						// "level2Dir": '上下车及驾驶姿势',
   					"userId": this.userinfo.id
 					}
 				})
@@ -141,28 +131,11 @@
 					}
 					return pre
 				}, {})
-				// console.log(this.detail)
-				// get("/knowledge/listInfoBySecondLevel", {
-				// 	// "studentId": "6",
-				// 	"secondLevel": str
-				// }).then((res) => {
-				// 	console.log(res, '结果')
-				// 	this.detail = res.reduce((pre, cur) => {
-				// 		if (!pre[cur['thirdLevel']]) {
-				// 			pre[cur['thirdLevel']] = [];
-				// 			pre[cur['thirdLevel']].push(cur)
-				// 		} else {
-				// 			pre[cur['thirdLevel']].push(cur)
-				// 		}
-				// 		return pre
-				// 	}, {})
-				// });
-
 			},
 			changeTabOne (index) {
 				this.pitchIndex = index;
 				if (this.picthFourIndex[index] === undefined) {
-					this.$set(this.picthFourIndex, index, 0);  // Initialize the state of second-level tabs
+					this.$set(this.picthFourIndex, index, 0);
 				}
 			},
 			changeTabTwo(tabOneIndex, tabTwoIndex) {
@@ -195,41 +168,8 @@
 				}
 				const learningStatus = Number(this.infoObj.learningStatus) === 2 ? 1 : 2
 				this.$set(this.infoObj, 'learningStatus', learningStatus)
-			
-				// setTimeout(() => {
-				// 	uni.navigateBack()
-				// }, 500)
-				// post("/knowledgeState/updateState", {
-				// 	"studentId": "6",
-				// 	"knowledgeId": this.infoObj.id.toString(),
-				// 	id: "12",
-				// 	status
-				// }).then((res) => {
-				// 	if (res) {
-				// 		uni.showToast({
-				// 			title: `学会了`,
-				// 			icon: 'none'
-				// 		})
-				// 		// setTimeout(() => {
-				// 		// 	uni.navigateBack()
-				// 		// }, 500)
-				// 	}
-				// }).catch(err => {
-				// 	// setTimeout(() => {
-				// 	// 	uni.navigateBack()
-				// 	// }, 500)
-				// });
-
 			},
-
-			onChange(swiper) {},
-			jumpStudyInfo() {
-
-			},
-			clickItem(item) {
-				this.pitchLevel = item.level
-			}
-		}
+    }
 	}
 </script>
 
@@ -238,30 +178,6 @@
 		margin: 0;
 		padding: 0;
 		font-family: 'PingFang sc', serif;
-	}
-
-	::-webkit-scrollbar {
-		display: none;
-		/* 隐藏WebKit浏览器的滚动条 */
-	}
-
-	/deep/ ::-webkit-scrollbar {
-		display: none;
-		width: 0;
-		height: 0;
-		color: transparent;
-	}
-
-	/* 兼容Firefox */
-	* {
-		scrollbar-width: none;
-		/* Firefox */
-	}
-
-	/* 兼容IE和Edge */
-	* {
-		-ms-overflow-style: none;
-		/* IE和Edge */
 	}
 
 	.study-info-wrap {
@@ -280,13 +196,9 @@
 
 	.fixed-box {
 		position: fixed;
-		bottom: 0rpx;
-		padding-left: 66rpx;
-		padding-right: 66rpx;
-		padding-top: 24rpx;
-		padding-bottom: calc(24rpx + constant(safe-area-inset-bottom));
-    padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
-		box-sizing: border-box;
+		bottom: 0;
+    padding: 24rpx 66rpx calc(24rpx + env(safe-area-inset-bottom));
+    box-sizing: border-box;
 		width: 100%;
 		display: flex;
 		background: #fff;
@@ -333,16 +245,6 @@
 			background: rgba(125, 134, 125, 0.45);
 		}
 
-		// .three {
-		// 	background-color: rgba(240, 119, 108, 1);
-		// 	border-radius: 0 10rpx 10rpx 0;
-		// 	flex-direction: column;
-
-		// 	.smallText {
-		// 		font-size: 8rpx;
-		// 		transform: scale(0.8);
-		// 	}
-		// }
 	}
 
 	.content {
@@ -350,7 +252,6 @@
 			font-size: 40rpx;
 			font-weight: 600;
 			white-space: nowrap;
-			// margin-top: -26rpx;
 
 			.tabOne-item {
 				display: inline-block;
@@ -371,12 +272,10 @@
 		}
 
 		.info {
-			padding: 30rpx 26rpx 60rpx;
-			margin: 0 auto;
-			padding-bottom: calc(184rpx + constant(safe-area-inset-bottom));
-    	padding-bottom: calc(184rpx + env(safe-area-inset-bottom));
+      margin: 0 auto;
+      padding: 30rpx 26rpx calc(184rpx + env(safe-area-inset-bottom));
 
-			.tabTwo {
+      .tabTwo {
 				display: flex;
 				flex-wrap: wrap;
 				/* 以下属性可根据需要调整，用于设置弹性项目之间的间距 */

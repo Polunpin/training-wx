@@ -15,16 +15,6 @@
      :latitude="currentLocation.latitude"
      :longitude="currentLocation.longitude"
     />
-    <!-- <draggable-sheet
-      class="sheet relative"
-      :style="{height:` ${sheetHeight}px`}"
-      :initial-child-size="minSize"
-      :min-child-size="minSize"
-      :max-child-size="maxSize"
-      snap
-      worklet:onsizeupdate="onSizeUpdate">
-      
-    </draggable-sheet> -->
     <!-- 进行中信息 -->
     <div class="running-info">
       <div class="info-content">
@@ -136,27 +126,12 @@ export default {
   onShow() {
     this.setCountDown()
   },
-  onReady() {
-    // this.createSelectorQuery()
-    //   .select(".sheet")
-    //   .node()
-    //   .exec(res => {
-    //     const sheetContext = res[0].node
-    //     sheetContext.scrollTo({
-    //         size: 1,
-    //         animated: true,
-    //         duration: 0,
-    //         easingFunction: 'ease'
-    //     })
-    //   })
-  },
   async onLoad(options) {
     if (!this.userinfo) {
       await this.$store.dispatch('initUserinfo')
     }
     this.practiceId = options.id
     if (RunningService.shared.location) {
-      // this.computeAccuracy(RunningService.shared.location.accuracy)
       this.currentLocation = RunningService.shared.location
       RunningService.shared.mapContent.moveToLocation(RunningService.shared.location)
     }
@@ -170,21 +145,11 @@ export default {
       this.status = data
     })
 
-    // eventBus.on('calorie', (data) => {
-    //   if (data === undefined) {
-    //       return
-    //   }
-    //   console.log('calorie 状态变化', data)
-    //   this.calorie = data
-    // })
-
-
     eventBus.on('location', (data) => {
       if (data === undefined) {
           return
       }
       console.log('location 状态变化')
-      // this.computeAccuracy(data.accuracy)
       this.currentLocation = data
     })
     eventBus.on('points', (data) => {
@@ -215,29 +180,12 @@ export default {
       }
       console.log('duration 状态变化')
       // 计算配速
-      // console.log('距离', RunningService.shared.distance, '速度', RunningService.shared.speed)
       const speed = TrackUtil.calculatePaceFromSpeed(RunningService.shared.speed)
       const avgSpeed = TrackUtil.calculateAveragePace(RunningService.shared.distance, data)
       this.speed = speed
       this.avgSpeed = avgSpeed
       this.duration =  TrackUtil.formatSeconds(data)
     })
-  },
-  mounted() {
-    // const {windowHeight} = wx.getSystemInfoSync()
-    // const menuRect = wx.getMenuButtonBoundingClientRect()
-    // this.sheetHeight = windowHeight - (menuRect.bottom + menuRect.height + 60)
-    // const rect = uni.getMenuButtonBoundingClientRect();
-    // uni.wx.getDeviceInfo({
-    //   success: (res) => {
-    //     const isAndroid = res.platform === 'android';
-    //     const isDevtools = res.platform === 'devtools';
-    //     this.ios = !isAndroid;
-    //     this.innerPaddingRight = `padding-right: ${res.windowWidth - rect.left}px`;
-    //     this.leftWidth = `width: ${res.windowWidth - rect.left}px`;
-    //     this.safeAreaTop = isDevtools || isAndroid ? `height: calc(var(--height) + ${res.safeArea.top}px); padding-top: ${res.safeArea.top}px` : '';
-    //   }
-    // });
   },
   methods: {
     // 倒计时
@@ -252,9 +200,6 @@ export default {
         this.setCountDown();
       }, 1000);
     },
-    // handleStart() {
-    //   RunningService.shared.start()
-    // },
     handlePause() {
         RunningService.shared.pause()
     },
@@ -276,32 +221,6 @@ export default {
     closePopup() {
       uni.reLaunch({ url: '/pages/index/index' })
     },
-    // onSizeUpdate(e) {
-    //   'worklet'
-    //   console.info(`sizeUpdate pixels: ${e.pixels} size: ${e.size}`)
-    //   const dis = this.sheetHeight - e.pixels
-    //   this.progress.value = dis >= 20 ? 1 : dis / 20
-    // },
-    /**
-     * 计算信号
-     */
-    // computeAccuracy(value) {
-    //   let label = '--';
-    //   if (!value) {
-    //     this.accuracy = label
-    //     return
-    //   }
-    //   if (value > 100) {
-    //       label = '很差'
-    //   } else if (value > 50) {
-    //       label = '差'
-    //   } else if (value > 20) {
-    //       label = '良好'
-    //   } else if (value > 20) {
-    //       label = '非常好'
-    //   }
-    //   this.accuracy = label
-    // },
     toSave () {
       uni.reLaunch({ url: '/pages/index/index' })
     },
@@ -325,7 +244,7 @@ export default {
       padding: 16rpx 16rpx 8rpx 16rpx;
       background: #fff;
       border-radius: 20rpx;
-      box-shadow: 0px 2px 48px 0px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
       .btn-img {
         width: 40rpx;
         height: 40rpx;
@@ -342,7 +261,7 @@ export default {
     border-radius: 24rpx;
     padding: 48rpx 32rpx;
     box-sizing: border-box;
-    box-shadow: 0px 4px 12px 0px rgba(159, 162, 168, 0.40);
+    box-shadow: 0 4px 12px 0;
     .info-content {
       display: flex;
       .content-item {
@@ -351,8 +270,9 @@ export default {
         align-items: center;
         flex: 1;
         .item-count {
-          font-family: 'MyFontPacifico';
-          font-size: 60rpx;
+          font-family: system-ui;
+          font-size: 58rpx;
+          font-weight: 600;
           line-height: 60rpx;
         }
         .item-name {
@@ -453,7 +373,7 @@ export default {
   width: 100%;
   bottom: 0;
   left: 0;
-  border-radius: 32rpx 32rpx 0rpx 0rpx;
+  border-radius: 32rpx 32rpx 0 0;
   overflow: hidden;
   background: #fff;
   box-sizing: border-box;

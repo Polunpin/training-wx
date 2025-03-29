@@ -107,7 +107,7 @@ var render = function () {
         var $orig = _vm.__get_orig(item)
         var m0 = Number(item.learningStatus)
         var m1 =
-          _vm.picthFourIndex[_vm.pitchIndex] == index &&
+          _vm.picthFourIndex[_vm.pitchIndex] === index &&
           Number(item.learningStatus) === 2
         return {
           $orig: $orig,
@@ -272,7 +272,6 @@ var _default = {
                   method: 'POST',
                   data: {
                     "level2Dir": _this2.level2Dir,
-                    // "level2Dir": '上下车及驾驶姿势',
                     "userId": _this2.userinfo.id
                   }
                 });
@@ -288,22 +287,6 @@ var _default = {
                   }
                   return pre;
                 }, {});
-                // console.log(this.detail)
-                // get("/knowledge/listInfoBySecondLevel", {
-                // 	// "studentId": "6",
-                // 	"secondLevel": str
-                // }).then((res) => {
-                // 	console.log(res, '结果')
-                // 	this.detail = res.reduce((pre, cur) => {
-                // 		if (!pre[cur['thirdLevel']]) {
-                // 			pre[cur['thirdLevel']] = [];
-                // 			pre[cur['thirdLevel']].push(cur)
-                // 		} else {
-                // 			pre[cur['thirdLevel']].push(cur)
-                // 		}
-                // 		return pre
-                // 	}, {})
-                // });
               case 5:
               case "end":
                 return _context2.stop();
@@ -315,7 +298,7 @@ var _default = {
     changeTabOne: function changeTabOne(index) {
       this.pitchIndex = index;
       if (this.picthFourIndex[index] === undefined) {
-        this.$set(this.picthFourIndex, index, 0); // Initialize the state of second-level tabs
+        this.$set(this.picthFourIndex, index, 0);
       }
     },
     changeTabTwo: function changeTabTwo(tabOneIndex, tabTwoIndex) {
@@ -363,30 +346,6 @@ var _default = {
                 }
                 learningStatus = Number(_this3.infoObj.learningStatus) === 2 ? 1 : 2;
                 _this3.$set(_this3.infoObj, 'learningStatus', learningStatus);
-
-                // setTimeout(() => {
-                // 	uni.navigateBack()
-                // }, 500)
-                // post("/knowledgeState/updateState", {
-                // 	"studentId": "6",
-                // 	"knowledgeId": this.infoObj.id.toString(),
-                // 	id: "12",
-                // 	status
-                // }).then((res) => {
-                // 	if (res) {
-                // 		uni.showToast({
-                // 			title: `学会了`,
-                // 			icon: 'none'
-                // 		})
-                // 		// setTimeout(() => {
-                // 		// 	uni.navigateBack()
-                // 		// }, 500)
-                // 	}
-                // }).catch(err => {
-                // 	// setTimeout(() => {
-                // 	// 	uni.navigateBack()
-                // 	// }, 500)
-                // });
               case 10:
               case "end":
                 return _context3.stop();
@@ -394,11 +353,6 @@ var _default = {
           }
         }, _callee3);
       }))();
-    },
-    onChange: function onChange(swiper) {},
-    jumpStudyInfo: function jumpStudyInfo() {},
-    clickItem: function clickItem(item) {
-      this.pitchLevel = item.level;
     }
   }
 };

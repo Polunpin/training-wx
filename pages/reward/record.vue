@@ -3,7 +3,7 @@
     <!-- Header -->
     <Header :headerInfo="{title: '兑换记录'}" />
     <!-- 滚动区域 -->
-    <scroll-view class="page-info" scroll-y :style="{height: `calc(100% - ${headerTop.height + headerTop.top}px)`}" lower-threshold="100">
+    <scroll-view class="page-info" :style="{height: `calc(100% - ${headerTop.height + headerTop.top}px)`}" lower-threshold="100">
       <!-- 列表 -->
       <div class="record-list" v-if="!pageLoading && recordList.length">
         <div class="list-item" v-for="(item,index) in recordList" :key="index" @click="toDetail(item.id)">
@@ -66,9 +66,6 @@ export default {
     toDetail(id) {
       uni.navigateTo({ url: `/pages/reward/detail?id=${id}&type=record`})
     },
-    // loadMore () {
-    //   console.log(11)
-    // }
   },
 }
 </script>
@@ -80,7 +77,6 @@ export default {
   background-repeat: no-repeat;
   box-sizing: border-box;
   background-position: top;
-  box-sizing: border-box;
   height: 100vh;
   overflow: hidden;
   display: flex;

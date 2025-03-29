@@ -1,8 +1,7 @@
 export default {
   computed: {
     headerTop() {
-      var header = wx.getMenuButtonBoundingClientRect()
-      return header
+      return wx.getMenuButtonBoundingClientRect()
     }
   },
   methods: {

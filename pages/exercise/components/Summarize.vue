@@ -118,7 +118,7 @@ export default {
           fail: e => {
             console.log(e)
             const info = e.toString()
-            if (info.indexOf('abort') != -1) {
+            if (info.indexOf('abort') !== -1) {
               reject(new Error('【文件上传失败】中断上传'))
             } else {
               reject(new Error('【文件上传失败】网络或其他错误'))
@@ -126,7 +126,7 @@ export default {
           }
         })
         task.onProgressUpdate((res) => {
-          if (onCall(res) == false) {
+          if (onCall(res) === false) {
             task.abort()
           }
         })
@@ -143,7 +143,7 @@ export default {
             mask: true
           })
           try {
-            const result = await this.upLoadApi(res.tempFilePaths[0], `image/upload/upload-${Date.now()}.jpg`, (res) => {})
+            const result = await this.upLoadApi(res.tempFilePaths[0], `image/upload/upload-${Date.now()}.jpg`, () => {})
             await this.getUrl(result)
             uni.hideLoading()
             uni.showToast({

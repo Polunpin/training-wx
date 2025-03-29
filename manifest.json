@@ -92,15 +92,4 @@
         }
     }
 }
-// "devServer": {
-// 	"proxy": {
-// 		"/myApi": {
-// 			"target": "https://springboot-29s4-111846-4-1327385705.sh.run.tcloudbase.com",
-// 			"changeOrigin": true,
-// 			"pathRewrite": {
-// 				"^/myApi": ""
-// 			}
-// 		}
-// 	}
-// }
 

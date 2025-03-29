@@ -205,9 +205,8 @@ export default {
         }
         .child-info {
           align-self: flex-end;
-          margin: 0 20rpx;
           flex: 1;
-          margin-bottom: 10rpx;
+          margin: 0 20rpx 10rpx;
           .info-distance {
             font-size: 40rpx;
             line-height: 40rpx;
@@ -249,7 +248,7 @@ export default {
   width: 100%;
   bottom: 0;
   left: 0;
-  border-radius: 32rpx 32rpx 0rpx 0rpx;
+  border-radius: 32rpx 32rpx 0 0;
   overflow: hidden;
   background: #fff;
   box-sizing: border-box;

@@ -1,20 +1,9 @@
 <template>
 	<view class="study-index-wrap">
-		<!-- 		<view class="swiper-box">
-			<z-swiper v-model="imgList" class=""
-				:options="{slidesPerView : 3,centeredSlides : true,centeredSlidesBounds: true,}" @slideChange="onChange">
-				<z-swiper-item v-for="(item,index) in imgList" :key="index" 
-					 :ref="item.level" @click="clickItem(item)">
-					<view class="swiper-item" :class="pitchLevel==item.level? 'bigImg' :''">
-						<image class="image" :src="item.imgUrl"> </image>
-					</view>
-				</z-swiper-item>
-			</z-swiper>
-		</view> -->
 		<view class="swiper-box">
 			<view class="main" >
 				<view class="swiper-item" v-for="(item,index) in imgList" :key="index" :ref="item.level"
-					@click="clickItem(item)" :class="pitchLevel==item.level? 'bigImg' :''">
+					@click="clickItem(item)" :class="pitchLevel===item.level? 'bigImg' :''">
 					<image class="image" :src="'https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/study/'+item.imgUrl+'?sign=5dc985b4e8f195b8ad0a7f4ea9635ae9&t=1740967594'"> </image>
 				</view>
 			</view>
@@ -90,7 +79,7 @@
 		},
 		computed: {
 			color() {
-				return this.imgList.find(item => item.level == this.pitchLevel).color
+				return this.imgList.find(item => item.level === this.pitchLevel).color
 			},
 			...mapGetters(["userinfo"])
 		},
@@ -122,21 +111,6 @@
 					item.per = Math.floor((item.learnCount / item.knowledgeSum) * 100)
 					return item
 				})
-				console.log(this.list, 'listlist')
-				// let that = this
-				// this.list = []
-				// post("/knowledge/knowledgeListByFirst", {
-				// 	"studentId": that.studentId,
-				// 	"firstLevel": pitchLevel
-				// }).then((res) => {
-				// 	this.list = res.knowledgeList.map(item => {
-				// 		item.text = item.learnCount + '/' + item.knowledgeSum
-				// 		item.per = Math.floor((item.learnCount / item.knowledgeSum) * 100)
-				// 		return item
-				// 	})
-				// 	this.pageLoading = true
-				// });
-
 			},
 			checkout() {
 				let keyMap = {
@@ -145,10 +119,10 @@
 					"中级": '初级',
 					"高级": '中级'
 				}
-				if (keyMap[this.pitchLevel] == '') {
+				if (keyMap[this.pitchLevel] === '') {
 					return true
 				}
-				return new Promise((resolve, reject) => {
+				return new Promise((resolve) => {
 					this.$cloudService.call({
 						path: '/knowledgeLibrary/listByLevel1Dir',
 						method: 'POST',
@@ -158,7 +132,7 @@
 						}
 					}).then(res => {
 							resolve(res.data.every((item) => {
-								return item.knowledgeSum == item.learnCount
+								return item.knowledgeSum === item.learnCount
 							}))
 					})
 				})
@@ -166,7 +140,7 @@
 			async jumpStudyInfo(str) {
 				if (!(await this.checkout())) {
 					uni.showToast({
-						title: '请先完成上一阶段练习',
+						title: '请先完成上一阶段学习',
 						icon: 'none'
 					})
 					return
@@ -194,49 +168,9 @@
 		color: transparent;
 	}
 
-	/* 兼容Firefox */
-	::-webkit-scrollbar {
-		display: none;
-	}
-	* {
-		scrollbar-width: none;
-		/* Firefox */
-	}
-
-	/* 兼容IE和Edge */
-	* {
-		-ms-overflow-style: none;
-		/* IE和Edge */
-	}
-
 	.study-index-wrap {
 		padding-top: 100rpx;
 	}
-
-	// .swiper-box {
-	// 	margin-top: 110rpx;
-	// 	height: 300rpx;
-
-	// }
-
-	// .swiper-item {
-	// 	display: flex;
-	// 	justify-content: center;
-	// 	height: 300rpx;
-	// 	align-items: center;
-	// }
-
-	// .bigImg {
-	// 	.image {
-	// 		transform: scale(1.5);
-	// 	}
-	// }
-
-	// .image {
-	// 	height: 200rpx;
-	// 	width: 60%;
-	// }
-	//  145 200px  94 127
 	.swiper-box {
 		height: 420rpx;
 		overflow-x: scroll;

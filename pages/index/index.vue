@@ -1,5 +1,5 @@
 <template>
-  <div class="index-container" v-if="!pageLoding">
+  <div class="index-container" v-if="!pageLoading">
     <div class="logo" @click="jumpPage('/pages/index/guide')">
       <image
         src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/logo.png?sign=6ab433dd380e30fdb7e8b8e782a03f72&t=1740907791"
@@ -11,9 +11,9 @@
         <div class="first"></div>
         <div class="second"></div>
       </div>
-        <div class="info-bg info-border-raduis">
-          <div class="info-bg1 info-border-raduis">
-            <div class="info-content info-border-raduis">
+        <div class="info-bg info-border-radius">
+          <div class="info-bg1 info-border-radius">
+            <div class="info-content info-border-radius">
               <p class="content-name"></p> 
               <div class="content-val">
                 <p class="val-title">驾驶能力</p>
@@ -23,7 +23,7 @@
           </div>
         </div>
     </div>
-    <div class="moudle">
+    <div class="module">
       <!-- 当前进度 -->
       <div class="module-current" v-if="Object.keys(dataInfo).length">
         <div class="current-info">
@@ -33,7 +33,7 @@
         <div class="current-btn" @click="jumpPage(`/pages/studyView/studyInfo?level2Dir=${dataInfo.level2Dir}&level3Dir=${dataInfo.level3Dir}&level4Dir=${dataInfo.level4Dir}`)">继续学习</div>
       </div>
       <!-- 模块列表 -->
-      <div class="moudle-list">
+      <div class="module-list">
         <!-- 前两项 -->
         <div class="list-first-row">
           <!-- 学习 -->
@@ -106,7 +106,7 @@ export default {
   data () {
     return {
       dataInfo:{},
-      pageLoding: true
+      pageLoading: true
     }
   },
   async onShow() {
@@ -114,15 +114,8 @@ export default {
       await this.$store.dispatch('initUserinfo')
     }
     if (this.userinfo) {
-      this.getStudyDetail()
+      await this.getStudyDetail()
     }
-  },
-  async onLoad() {
-    // get("/lessonManagement/personalInfo", {
-    //   unionId: uni.getStorageSync("unionid"),
-    // }).then((res) => {
-    //   this.$store.commit("setUserinfo", res);
-    // });
   },
   methods: {
     // 获取继续学习
@@ -131,7 +124,7 @@ export default {
         path:'/learningProgress/getLearningProgress',
         data: {userId: this.userinfo.id}
       })
-      this.pageLoding = false
+      this.pageLoading = false
       this.dataInfo = res.data || {}
     },
 
@@ -179,13 +172,12 @@ export default {
         background: rgba(92, 110, 128, 0.50);
       }
     }
-    .info-border-raduis {
+    .info-border-radius {
       border-top-left-radius: 160rpx;
       border-bottom-left-radius: 120rpx;
     }
     .info-bg {
-      padding: 32rpx;
-      padding-right: 0;
+      padding: 32rpx 0 32rpx 32rpx;
       background: #d9d9d9;
       width: 80%;
       box-shadow: 0 4rpx 20rpx 0 rgba(0, 0, 0, 0.25);
@@ -221,7 +213,7 @@ export default {
       }
     }
   }
-  .moudle {
+  .module {
     padding: 66rpx 60rpx;
     .module-current {
       padding: 14rpx 30rpx;
@@ -249,7 +241,7 @@ export default {
         font-weight: bolder;
       }
     }
-    .moudle-list {
+    .module-list {
       margin-top: 24rpx;
       display: flex;
       justify-content: space-between;

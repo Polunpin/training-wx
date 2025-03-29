@@ -4,11 +4,6 @@
   height: 0;
   color: transparent;
 }
- /* 兼容Firefox */
-.data-v-23abe7ba::-webkit-scrollbar {
-  display: none;
-}
- /* 兼容IE和Edge */
 .study-index-wrap.data-v-23abe7ba {
   padding-top: 100rpx;
 }

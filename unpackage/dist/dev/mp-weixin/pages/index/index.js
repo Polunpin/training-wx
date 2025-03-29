@@ -102,7 +102,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var g0 = !_vm.pageLoding ? Object.keys(_vm.dataInfo).length : null
+  var g0 = !_vm.pageLoading ? Object.keys(_vm.dataInfo).length : null
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -162,7 +162,7 @@ var _default = {
   data: function data() {
     return {
       dataInfo: {},
-      pageLoding: true
+      pageLoading: true
     };
   },
   onShow: function onShow() {
@@ -179,10 +179,13 @@ var _default = {
               _context.next = 3;
               return _this.$store.dispatch('initUserinfo');
             case 3:
-              if (_this.userinfo) {
-                _this.getStudyDetail();
+              if (!_this.userinfo) {
+                _context.next = 6;
+                break;
               }
-            case 4:
+              _context.next = 6;
+              return _this.getStudyDetail();
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -190,36 +193,17 @@ var _default = {
       }, _callee);
     }))();
   },
-  onLoad: function onLoad() {
-    return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
-      return _regenerator.default.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2);
-    }))();
-  } // get("/lessonManagement/personalInfo", {
-  //   unionId: uni.getStorageSync("unionid"),
-  // }).then((res) => {
-  //   this.$store.commit("setUserinfo", res);
-  // });
-  ,
-
   methods: {
     // 获取继续学习
     getStudyDetail: function getStudyDetail() {
       var _this2 = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
         var res;
-        return _regenerator.default.wrap(function _callee3$(_context3) {
+        return _regenerator.default.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context3.next = 2;
+                _context2.next = 2;
                 return _this2.$cloudService.call({
                   path: '/learningProgress/getLearningProgress',
                   data: {
@@ -227,15 +211,15 @@ var _default = {
                   }
                 });
               case 2:
-                res = _context3.sent;
-                _this2.pageLoding = false;
+                res = _context2.sent;
+                _this2.pageLoading = false;
                 _this2.dataInfo = res.data || {};
               case 5:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3);
+        }, _callee2);
       }))();
     },
     //学习
