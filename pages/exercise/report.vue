@@ -1,30 +1,31 @@
 <template>
   <div class="exercise-record">
     <!-- 头部 -->
-    <Header  @handleClick="backHome" :headerInfo="headerInfo" :isHasClick="!pagetype"></Header>
+    <Header @handleClick="backHome" :headerInfo="headerInfo" :isHasClick="!pagetype"></Header>
     <!-- 内容 -->
     <div class="page-info no-scrollbar" v-if="!pageLoading">
       <!-- 基本数据 -->
       <div class="module-base">
         <!-- 信息 -->
-        <div class="base-info"> 
+        <div class="base-info">
           <div class="info-box">
-            <image class="title-icon" src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/exercise/record-base-icon.png?sign=9471c86d37d63201dc9ea755e00e659e&t=1742122911" />
+            <image class="title-icon"
+                   src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/exercise/record-base-icon.png?sign=9471c86d37d63201dc9ea755e00e659e&t=1742122911"/>
             <div class="box-content">
-              <text class="title">{{detailInfo.title}}</text>
-              <text class="date">{{detailInfo.consumptionTime}}</text>
+              <text class="title">{{ detailInfo.title }}</text>
+              <text class="date">{{ detailInfo.consumptionTime }}</text>
             </div>
           </div>
         </div>
         <!-- 记录图 -->
         <div class="base-map">
           <map
-            :include-points="detailInfo.trajectory"
-            id="track-review-map"
-            class="track-preview-map"
-            :enable-zoom="false"
-            :enable-scroll="false"
-            :polyline="polyline">
+              :include-points="detailInfo.trajectory"
+              id="track-review-map"
+              class="track-preview-map"
+              :enable-zoom="false"
+              :enable-scroll="false"
+              :polyline="polyline">
           </map>
         </div>
       </div>
@@ -33,27 +34,27 @@
         <div class="module-title">驾驶数据</div>
         <div class="driving-data">
           <div class="data-item">
-            <div class="item-count" style="color: #1B9B47;">{{detailInfo.duration}}</div>
+            <div class="item-count" style="color: #1B9B47;">{{ detailInfo.duration }}</div>
             <div class="item-name">总耗时</div>
           </div>
           <div class="data-item">
-            <div class="item-count">{{detailInfo.distance}}</div>
+            <div class="item-count">{{ detailInfo.distance }}</div>
             <div class="item-name">路程(km)</div>
           </div>
           <div class="data-item">
-            <div class="item-count">{{detailInfo.avgSpeed}}</div>
+            <div class="item-count">{{ detailInfo.avgSpeed }}</div>
             <div class="item-name">平均速度(km/h)</div>
           </div>
           <div class="data-item">
-            <div class="item-count">{{detailInfo.maxSpeed}}</div>
+            <div class="item-count">{{ detailInfo.maxSpeed }}</div>
             <div class="item-name">最高时速(km/h)</div>
           </div>
           <div class="data-item">
-            <div class="item-count" style="color: #B02511;">{{detailInfo.suddenBrakeCount}}</div>
+            <div class="item-count" style="color: #B02511;">{{ detailInfo.suddenBrakeCount }}</div>
             <div class="item-name">急刹车(次数)</div>
           </div>
           <div class="data-item">
-            <div class="item-count">+{{detailInfo.suddenBrakeCount || 0}}</div>
+            <div class="item-count">+{{ detailInfo.suddenBrakeCount || 0 }}</div>
             <div class="item-name">安全指数</div>
           </div>
         </div>
@@ -61,15 +62,17 @@
       <!-- 练习表现 -->
       <div class="module moudle-performance">
         <div class="module-title">练习表现</div>
-        <div class="module-content"><Score :dataList="detailInfo.performance" :isClick="false"/></div>
+        <div class="module-content">
+          <Score :dataList="detailInfo.performance" :isClick="false"/>
+        </div>
       </div>
       <!-- 练习心得 -->
       <div class="module module-learning" v-if="detailInfo.insights">
         <div class="module-title">练习心得</div>
-        <div class="module-content learning-content">{{detailInfo.insights}}</div>
+        <div class="module-content learning-content">{{ detailInfo.insights }}</div>
       </div>
-       <!-- 练习照片 -->
-       <div class="module module-photo" v-if="detailInfo.photos">
+      <!-- 练习照片 -->
+      <div class="module module-photo" v-if="detailInfo.photos">
         <div class="module-title">练习照片</div>
         <div class="module-content photo-content">
           <image :src="detailInfo.photos" mode="widthFix"></image>
@@ -82,7 +85,7 @@
     </div>
     <!-- 弹窗 -->
     <div class="summarize-popup"
-      :style="{height: showSummarizePopup ? `calc(100vh - ${headerTop.height + headerTop.top + 10}px)` : 0}"
+         :style="{height: showSummarizePopup ? `calc(100vh - ${headerTop.height + headerTop.top + 10}px)` : 0}"
     >
       <div class="popup-content" v-if="showSummarizePopup">
         <div class="close-box" @touchend.stop="closePopup"></div>
@@ -95,6 +98,7 @@
 import Score from './components/Score.vue'
 import Header from '@/components/header'
 import Summarize from './components/Summarize.vue'
+
 export default {
   components: {
     Score,
@@ -126,13 +130,13 @@ export default {
     this.getDetail()
   },
   methods: {
-    closePopup () {
+    closePopup() {
       this.showSummarizePopup = false
     },
-    editRecord () {
+    editRecord() {
       this.showSummarizePopup = true
     },
-    async getDetail () {
+    async getDetail() {
       const res = await this.$cloudService.call({
         path: '/comprehensive/getPracticeRecord',
         data: {
@@ -142,7 +146,7 @@ export default {
       this.pageLoading = false
       if (res.data) {
         this.polyline = [{
-          points:  res.data.trajectory || [],
+          points: res.data.trajectory || [],
           borderColor: '#ffffff',
           borderWidth: 1,
           level: "abovelabels",
@@ -167,26 +171,26 @@ export default {
                 iconPath: this.endIcon,
                 id: 301,
                 width: 26,
-                latitude: res.data.trajectory[res.data.trajectory.length -1].latitude,
-                longitude: res.data.trajectory[res.data.trajectory.length -1].longitude,
+                latitude: res.data.trajectory[res.data.trajectory.length - 1].latitude,
+                longitude: res.data.trajectory[res.data.trajectory.length - 1].longitude,
               }
             ]
           })
         }
         this.detailInfo = res.data
       }
-    
+
     },
-    toSave () {
+    toSave() {
       this.closePopup()
       this.getDetail()
     },
-    toReport () {
+    toReport() {
       this.closePopup()
       this.getDetail()
     },
-    backHome () {
-      uni.reLaunch({ url: '/pages/index/index' })
+    backHome() {
+      uni.reLaunch({url: '/pages/index/index'})
     }
   },
   mounted() {
@@ -200,39 +204,48 @@ export default {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+
   .page-info {
     flex: 1;
     overflow: auto;
+
     .module-base {
       .base-info {
         padding: 32rpx 26rpx;
+
         .info-box {
           display: flex;
           align-items: center;
+
           .title-icon {
             width: 70rpx;
             height: 70rpx;
             margin-right: 4rpx;
           }
+
           .box-content {
             display: flex;
             flex-direction: column;
+
             .title {
               font-size: 36rpx;
               font-weight: bold;
               color: #000;
             }
+
             .date {
               font-size: 24rpx;
               color: rgba(108, 108, 109, 1);
             }
           }
-          
+
         }
+
         .info-count {
           font-size: 56rpx;
           line-height: 56rpx;
           margin-top: 16rpx;
+
           text {
             font-size: 120rpx;
             font-weight: 600;
@@ -240,28 +253,34 @@ export default {
           }
         }
       }
+
       .base-map {
         width: 100%;
         height: 450rpx;
         background: #eee;
         border-radius: 0 0 24rpx 24rpx;
+
         .track-preview-map {
           width: 100%;
           height: 100%;
         }
       }
     }
+
     .module {
       padding-bottom: 32rpx;
       position: relative;
       margin: 32rpx 32rpx 0;
-      .module-title{
+
+      .module-title {
         font-size: 32rpx;
         margin-bottom: 32rpx;
       }
+
       .module-content {
         padding: 0 20rpx;
       }
+
       &::after {
         content: '';
         position: absolute;
@@ -273,47 +292,57 @@ export default {
         background: rgba(247, 247, 247, 1);
         transform: scale(0.5);
       }
+
       &.module-driving {
-       .driving-data{
-        display: flex;
-        flex-wrap: wrap;
-        padding: 0 16rpx;
-        margin-top: -40rpx;
-        .data-item {
+        .driving-data {
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 50%;
-          margin-top: 40rpx;
-          .item-count {
-            font-size: 64rpx;
-            font-weight: bold;
-            .unit {
-              font-size: 28rpx;
+          flex-wrap: wrap;
+          padding: 0 16rpx;
+          margin-top: -40rpx;
+
+          .data-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            margin-top: 40rpx;
+
+            .item-count {
+              font-size: 64rpx;
+              font-weight: bold;
+
+              .unit {
+                font-size: 28rpx;
+              }
+            }
+
+            .item-name {
+              font-size: 32rpx;
+              color: rgba(111, 111, 111, 1)
             }
           }
-          .item-name {
-            font-size: 32rpx;
-            color: rgba(111, 111, 111, 1)
-          }
         }
-       }
       }
+
       &.module-learning {
         margin-left: 0;
         margin-right: 0;
         padding: 0 32rpx 32rpx;
+
         .learning-content {
           font-size: 28rpx;
           color: rgba(29, 30, 34, 1)
         }
       }
-      &.module-photo{
+
+      &.module-photo {
         margin-left: 0;
         margin-right: 0;
         padding: 0 32rpx 32rpx;
+
         .photo-content {
           width: 400rpx;
+
           image {
             width: 100%;
             height: 100%;
@@ -321,10 +350,12 @@ export default {
         }
       }
     }
+
     .bottom {
       box-sizing: border-box;
       width: 100%;
       padding: 16rpx 32rpx calc(24rpx + env(safe-area-inset-bottom));
+
       .bottom-btn {
         width: 100%;
         box-sizing: border-box;
@@ -339,6 +370,7 @@ export default {
     }
   }
 }
+
 .summarize-popup {
   position: fixed;
   z-index: 200;
@@ -351,12 +383,15 @@ export default {
   box-sizing: border-box;
   box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
+
   .popup-content {
     height: 100%;
     position: relative;
+
     .close-box {
       width: 100%;
       height: 40rpx;;
+
       &::after {
         content: '';
         position: absolute;
@@ -365,11 +400,11 @@ export default {
         transform: translateX(-50%);
         width: 64rpx;
         height: 8rpx;
-        background: rgba(3,16,42,0.16);
+        background: rgba(3, 16, 42, 0.16);
         border-radius: 8rpx;
       }
     }
   }
-  
+
 }
 </style>

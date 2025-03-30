@@ -8,6 +8,6 @@
   justify-content: center;
   font-size: 28rpx;
   padding: 40rpx;
-  color: rgba(0,0,0,0.66);
+  color: rgba(0, 0, 0, 0.66);
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="detail-wrap">
     <!-- Header -->
-    <Header :headerInfo="{title: '兑换'}" />
-    <div class="page-info no-scrollbar" >
+    <Header :headerInfo="{title: '兑换'}"/>
+    <div class="page-info no-scrollbar">
       <div class="detail-box" v-if="!pageLoading">
         <div class="box-top">
           <div class="box-img">
@@ -18,15 +18,15 @@
           </div>
           <div class="box-content">
             <div class="detail-count">
-              消耗金币：{{detailInfo.exchangeCondition}}
+              消耗金币：{{ detailInfo.exchangeCondition }}
             </div>
             <div class="detail-information">
-              {{detailInfo.description}}
+              {{ detailInfo.description }}
             </div>
             <div class="detail-btn" v-if="optionData.type === 'list' && !isChange" @click="toChange">兑换</div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -34,6 +34,7 @@
 <script>
 import Header from '@/components/header.vue'
 import {mapGetters} from "vuex";
+
 export default {
   components: {
     Header
@@ -41,7 +42,7 @@ export default {
   computed: {
     ...mapGetters(["userinfo"]),
   },
-  data () {
+  data() {
     return {
       optionData: 0,
       detailInfo: {},
@@ -58,43 +59,43 @@ export default {
     this.getDetailInfo()
   },
   methods: {
-   async getDetailInfo () {
-    const obj = {}
-    if (this.optionData.type === 'list') {
-      obj.id = this.optionData.id
-    } else {
-      obj.redemptionId = this.optionData.id
-    }
-    const res = await this.$cloudService.call({
-      path:this.optionData.type === 'list' ?'/reward/getRewardDetail' : '/comprehensive/exchangeDetail',
-      data: obj
-    })
-    this.pageLoading = false
-    this.detailInfo = res.data
-    console.log(res.data)
-   },
-   async toChange() {
-    if (this.isChangeLock) return
-    this.isChangeLock = true
-    const res = await this.$cloudService.call({
-      path:'/comprehensive/exchange',
-      method: 'POST',
-      data: {
-        rewardId: this.optionData.id,
-        userId: this.userinfo.id,
-        goldCoins: this.detailInfo.exchangeCondition
+    async getDetailInfo() {
+      const obj = {}
+      if (this.optionData.type === 'list') {
+        obj.id = this.optionData.id
+      } else {
+        obj.redemptionId = this.optionData.id
       }
-    })
-    this.isChangeLock = false
-    if(res.data) {
-      this.isChange = true
+      const res = await this.$cloudService.call({
+        path: this.optionData.type === 'list' ? '/reward/getRewardDetail' : '/comprehensive/exchangeDetail',
+        data: obj
+      })
+      this.pageLoading = false
+      this.detailInfo = res.data
+      console.log(res.data)
+    },
+    async toChange() {
+      if (this.isChangeLock) return
+      this.isChangeLock = true
+      const res = await this.$cloudService.call({
+        path: '/comprehensive/exchange',
+        method: 'POST',
+        data: {
+          rewardId: this.optionData.id,
+          userId: this.userinfo.id,
+          goldCoins: this.detailInfo.exchangeCondition
+        }
+      })
+      this.isChangeLock = false
+      if (res.data) {
+        this.isChange = true
+      }
+      uni.showToast({
+        title: res.errorMsg,
+        icon: 'none',
+        mask: true
+      })
     }
-    uni.showToast({
-      title: res.errorMsg,
-      icon: 'none',
-      mask: true
-    })
-   }
   },
 }
 </script>
@@ -110,11 +111,13 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
   .page-info {
     flex: 1;
     overflow: auto;
     padding: 40rpx 40rpx 120rpx;
   }
+
   .detail-box {
     width: 100%;
     padding: 10rpx 10rpx 50rpx;
@@ -125,22 +128,26 @@ export default {
     background: #fff;
     display: flex;
     flex-direction: column;
+
     .box-top {
       flex: 1;
       display: flex;
       align-items: center;
+
       .box-img {
         flex-shrink: 0;
         width: 100%;
+
         image {
           width: 100%;
           height: 100%;
         }
       }
     }
-    
+
     .box-bottom {
       padding-bottom: 60rpx;
+
       .split-line {
         margin-top: 50rpx;
         display: flex;
@@ -150,21 +157,25 @@ export default {
         width: 100%;
         left: 0;
         right: 0;
+
         .circle {
           width: 96rpx;
           height: 96rpx;
           background-color: #B4A5CC;
           flex-shrink: 0;
           position: relative;
+
           &.circle-left {
             right: -38rpx;
             clip-path: circle(50% at 0% 50%);
           }
+
           &.circle-right {
             left: -38rpx;
             clip-path: circle(50% at 100% 50%);
           }
         }
+
         .line {
           width: calc(100% - 96rpx);
           height: 1px;
@@ -172,11 +183,13 @@ export default {
           border-bottom: 2px dashed #B4A5CC;
         }
       }
+
       .box-content {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 0 66rpx;
+
         .detail-information {
           margin-top: 30rpx;
           font-size: 30rpx;
@@ -184,6 +197,7 @@ export default {
           color: rgba(0, 0, 0, 0.37);
           text-align: center;
         }
+
         .detail-count {
           display: flex;
           align-items: center;
@@ -191,6 +205,7 @@ export default {
           margin-top: 24rpx;
           font-size: 36rpx;
         }
+
         .detail-btn {
           padding: 28rpx 140rpx;
           background: #B4A5CC;

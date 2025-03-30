@@ -3,20 +3,20 @@
     <div class="index-box" v-for="(item, index) in exerciseList" :key="index" @click="openPopup(item)">
       <div class="box-item">
         <image
-          class="item-img"
-          :src="item.imageUrl"
-          mode="scaleToFill"
+            class="item-img"
+            :src="item.imageUrl"
+            mode="scaleToFill"
         />
         <div class="item-info">
-          <div class="info-title">{{item.title}}</div>
+          <div class="info-title">{{ item.title }}</div>
           <div class="info-content">
-            <span class="content-time">已练习：{{item.duration}}小时</span>
+            <span class="content-time">已练习：{{ item.duration }}小时</span>
           </div>
         </div>
       </div>
     </div>
     <!-- 弹窗 -->
-    <div class="start-popup"  :style="{height: showPopup ? `calc(100vh - 10px)` : 0}">
+    <div class="start-popup" :style="{height: showPopup ? `calc(100vh - 10px)` : 0}">
       <div class="popup-content" v-if="showPopup">
         <div class="close-box" @touchend.stop="closePopup"></div>
         <Start :notes="notes" :target="target" @handleStart="toStart"/>
@@ -28,7 +28,8 @@
 import Start from './components/Start.vue'
 import {RunningService} from './running/js/RunningService'
 import {mapGetters} from "vuex";
-export default{
+
+export default {
   components: {
     Start
   },
@@ -53,30 +54,30 @@ export default{
   },
   methods: {
     // 获取练习列表
-    async getExercise () {
+    async getExercise() {
       const res = await this.$cloudService.call({
         path: '/comprehensive/getPracticeList',
         data: {userId: this.userinfo.id}
       })
       this.exerciseList = res.data
     },
-    toStart () {
+    toStart() {
       RunningService.shared.checkPermission(() => {
         RunningService.shared.start(() => {
-          uni.navigateTo({ url: `/pages/exercise/running/running?id=${this.currentId}` })
+          uni.navigateTo({url: `/pages/exercise/running/running?id=${this.currentId}`})
           setTimeout(() => {
             this.closePopup()
           }, 2000)
         })
       })
     },
-    openPopup (item) {
+    openPopup(item) {
       this.showPopup = true
       this.notes = item.notes
       this.target = item.target
-      this.currentId =item.id
+      this.currentId = item.id
     },
-    closePopup () {
+    closePopup() {
       this.showPopup = false
     },
   },
@@ -88,18 +89,22 @@ export default{
   overflow: auto;
   height: 100vh;
   box-sizing: border-box;
+
   .index-box {
     margin-bottom: 60rpx;
+
     &:last-child {
       margin-bottom: 0;
     }
+
     .box-item {
       border-radius: 32rpx;
       overflow: hidden;
       background: #cdcbcb;
-      width:100%;
+      width: 100%;
       height: 332rpx;
       position: relative;
+
       .item-img {
         position: absolute;
         width: 100%;
@@ -107,7 +112,8 @@ export default{
         top: 0;
         left: 0;
       }
-      .item-info{
+
+      .item-info {
         position: absolute;
         bottom: 0;
         width: 100%;
@@ -117,12 +123,15 @@ export default{
         justify-content: space-between;
         align-items: center;
         box-sizing: border-box;
+
         .info-title {
           font-size: 36rpx;
         }
+
         .info-content {
           display: flex;
           align-items: center;
+
           .content-time {
             font-size: 20rpx;
             color: rgba(0, 0, 0, 0.70);
@@ -145,12 +154,15 @@ export default{
     box-sizing: border-box;
     box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.2);
     transition: all 0.3s;
+
     .popup-content {
       height: 100%;
       position: relative;
+
       .close-box {
         width: 100%;
         height: 40rpx;;
+
         &::after {
           content: '';
           position: absolute;
@@ -159,7 +171,7 @@ export default{
           transform: translateX(-50%);
           width: 64rpx;
           height: 8rpx;
-          background: rgba(3,16,42,0.16);
+          background: rgba(3, 16, 42, 0.16);
           border-radius: 8rpx;
         }
       }
