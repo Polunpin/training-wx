@@ -3,8 +3,8 @@
     <!-- 标题 -->
     <div class="title-img">
       <image
-        src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/exercise/summarize-title.png?sign=6765fcba62d3efeb4dc63d1d76704b46&t=1742308915"
-        mode="scaleToFill"
+          src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/exercise/summarize-title.png?sign=6765fcba62d3efeb4dc63d1d76704b46&t=1742308915"
+          mode="scaleToFill"
       />
     </div>
     <!-- 练习表现 -->
@@ -12,7 +12,7 @@
       <div class="module-title">练习表现</div>
       <div class="module-content">
         <Score :dataList="performance" @handleStar="handleStar"/>
-      </div> 
+      </div>
     </div>
     <!-- 复盘心得 -->
     <div class="module">
@@ -22,19 +22,19 @@
       </div>
     </div>
     <!-- 练习照片 -->
-    <div class="module" >
+    <div class="module">
       <div class="module-title">练习照片</div>
       <div class="module-content">
         <div class="upload-icon" @click="upLoadImg" v-if="!imgSrc">
           <image
-            src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/exercise/upload-icon.png?sign=023d9cbc0ce80f6b756e6e7fb2b8e6ec&t=1742362256"
-            mode="scaleToFill"
+              src="https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/exercise/upload-icon.png?sign=023d9cbc0ce80f6b756e6e7fb2b8e6ec&t=1742362256"
+              mode="scaleToFill"
           />
         </div>
         <div class="upload-img" @click="upLoadImg" v-else>
           <image
-            :src="imgSrc"
-            mode="widthFix"
+              :src="imgSrc"
+              mode="widthFix"
           />
         </div>
       </div>
@@ -50,6 +50,7 @@
 <script>
 import Score from './Score.vue'
 import {mapGetters} from "vuex";
+
 export default {
   components: {
     Score
@@ -63,7 +64,7 @@ export default {
       default: 0
     }
   },
-  data () {
+  data() {
     return {
       imgSrc: '',
       insights: '',
@@ -89,23 +90,24 @@ export default {
       this.performance = performance
     },
     // 获取链接
-    getUrl (fileID) {
+    getUrl(fileID) {
       wx.cloud.getTempFileURL({
-      fileList: [fileID], // 这里替换为你的文件 cloudPath
-      success: res => {
-        // fileList 是一个有相同 ID 的文件链接的数组
-        this.imgSrc = res.fileList[0].tempFileURL
-        // this.setData({
-        //   imageSrc: tempFileURL
-        // })
-      },
-      fail: err => {
-        console.error(err)
-      }
-    })
+        fileList: [fileID], // 这里替换为你的文件 cloudPath
+        success: res => {
+          // fileList 是一个有相同 ID 的文件链接的数组
+          this.imgSrc = res.fileList[0].tempFileURL
+          // this.setData({
+          //   imageSrc: tempFileURL
+          // })
+        },
+        fail: err => {
+          console.error(err)
+        }
+      })
     },
     // 上传接口
-    async upLoadApi (file, path, onCall = () => {}) {
+    async upLoadApi(file, path, onCall = () => {
+    }) {
       await wx.cloud.init()
       return new Promise((resolve, reject) => {
         const task = wx.cloud.uploadFile({
@@ -132,18 +134,19 @@ export default {
         })
       })
     },
-    upLoadImg () {
+    upLoadImg() {
       uni.chooseImage({
         count: 1, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 从相册选择
         success: async (res) => {
-           uni.showLoading({
+          uni.showLoading({
             title: '图片上传中',
             mask: true
           })
           try {
-            const result = await this.upLoadApi(res.tempFilePaths[0], `image/upload/upload-${Date.now()}.jpg`, () => {})
+            const result = await this.upLoadApi(res.tempFilePaths[0], `image/upload/upload-${Date.now()}.jpg`, () => {
+            })
             await this.getUrl(result)
             uni.hideLoading()
             uni.showToast({
@@ -166,7 +169,7 @@ export default {
       this.performance = list
       console.log(list)
     },
-    async saveReport (callback) {
+    async saveReport(callback) {
       let allRatesNonZero = this.performance ? this.performance.every(item => item.rate !== 0) : false;
       if (!allRatesNonZero) {
         uni.showToast({
@@ -184,7 +187,7 @@ export default {
         })
         return
       }
-      
+
       const json = {
         id: this.reportId,
         photos: this.imgSrc,
@@ -201,12 +204,12 @@ export default {
         callback()
       }
     },
-    toSave () {
+    toSave() {
       this.saveReport(() => {
         this.$emit('toSave')
       })
     },
-    toReport () {
+    toReport() {
       this.saveReport(() => {
         this.$emit('toReport')
       })
@@ -220,18 +223,22 @@ export default {
   overflow: auto;
   padding: 80rpx 24rpx;
   box-sizing: border-box;
+
   .title-img {
     width: 552rpx;
     height: 60rpx;
     margin: 0 auto 50rpx;
+
     image {
       width: 100%;
       height: 100%;
     }
   }
+
   .module {
     padding: 32rpx 0;
     position: relative;
+
     &::after {
       content: '';
       position: absolute;
@@ -243,18 +250,22 @@ export default {
       background: rgba(247, 247, 247, 1);
       transform: scale(0.5);
     }
-    &:last-child{
+
+    &:last-child {
       &::after {
         display: none;
       }
     }
+
     .module-title {
       font-size: 40rpx;
       line-height: 40rpx;
       margin-bottom: 20rpx;
     }
+
     .module-content {
       padding: 0 22rpx;
+
       .textarea {
         padding: 24rpx;
         width: 100%;
@@ -264,6 +275,7 @@ export default {
         border-radius: 16rpx;
         font-size: 28rpx;
       }
+
       .upload-icon {
         width: 100%;
         box-sizing: border-box;
@@ -273,13 +285,16 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+
         image {
           width: 104rpx;
           height: 104rpx;
         }
       }
+
       .upload-img {
         width: 400rpx;
+
         image {
           width: 100%;
           height: 100%;
@@ -287,11 +302,13 @@ export default {
       }
     }
   }
+
   .btn-wrap {
     padding: 56rpx 40rpx;
     display: flex;
     justify-content: center;
     align-items: center;
+
     .btn {
       display: flex;
       justify-content: center;
@@ -301,13 +318,15 @@ export default {
       color: #fff;
       padding: 16rpx 0;
     }
+
     .save-btn {
-      background:  rgba(15, 65, 149, 0.74);
+      background: rgba(15, 65, 149, 0.74);
       width: 256rpx;
     }
+
     .save-see-btn {
       width: 350rpx;
-      background:  #14AE5C;
+      background: #14AE5C;
       margin-left: 40rpx;
     }
   }

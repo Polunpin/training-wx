@@ -125,7 +125,7 @@ export class RunningService extends TimerService {
     showAlert() {
         wx.showModal({
                 title: '未获得定位权限',
-                content: '跑步功能需要您手机授权后台定位功能，若您继续使用此功能请设置使用时和离开后权限。',
+                content: '练习功能需要您手机授权后台定位功能，若您继续使用此功能请设置使用时和离开后权限。',
                 cancelText: '退出使用',
                 confirmText: '设置授权',
                 success: (result) => {
@@ -140,7 +140,6 @@ export class RunningService extends TimerService {
                                 res.authSetting = {
                                     "scope.userLocation": true,
                                     "scope.userInfo": true,
-                                    'scope.werun': true
                                 }
                             }
                         })
@@ -157,7 +156,7 @@ export class RunningService extends TimerService {
         this.timerPause()
         wx.stopLocationUpdate({
             complete: (res) => {
-                console.log("跑步暂停，停止位置更新:", res)
+                console.log("练习暂停，停止位置更新:", res)
             }
         })
     }

@@ -1,4 +1,3 @@
-
 <template>
   <view class="progress-bar">
     <!-- 进度条容器 -->
@@ -8,43 +7,42 @@
   </view>
 </template>
 <script>
-	export default {
-		name:"progressBar",
-		data() {
-			return {
-				
-			};
-		},
-		  props: {
-		    // 接收进度百分比，类型为数字，默认值为 0
-		    percentage: {
-		      type: Number,
-		      default: 0,
-		      // 验证传入的百分比是否在 0 到 100 之间
-		      validator: function (value) {
-		        return value >= 0 && value <= 100;
-		      }
-		    },
-			// 进度条的颜色
-			color:{
-				type:String,
-				default:'#4caf50',
-				
-			},
-			text:{
-				type:String,
-				default:''
-			}
-		  }
-	}
+export default {
+  name: "progressBar",
+  data() {
+    return {};
+  },
+  props: {
+    // 接收进度百分比，类型为数字，默认值为 0
+    percentage: {
+      type: Number,
+      default: 0,
+      // 验证传入的百分比是否在 0 到 100 之间
+      validator: function (value) {
+        return value >= 0 && value <= 100;
+      }
+    },
+    // 进度条的颜色
+    color: {
+      type: String,
+      default: '#4caf50',
+
+    },
+    text: {
+      type: String,
+      default: ''
+    }
+  }
+}
 </script>
 
 <style scoped>
-	* {
-		font-family: 'PingFang sc', serif;
-	}
+* {
+  font-family: 'PingFang sc', serif;
+}
+
 .progress-bar {
-	height: 36rpx;
+  height: 36rpx;
   width: 95%;
   background-color: #F3F3F3;
   border-radius: 18rpx;
@@ -68,7 +66,7 @@
 .progress-text {
   color: #1C1916;
   z-index: 1; /* 确保文字显示在进度条之上 */
-  font-size:24rpx;
+  font-size: 24rpx;
   font-weight: 600;
 }
 </style>
