@@ -4,16 +4,10 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.tips-wrap {
-  width: 100%;
-  height: 100vh;
-  background: #fff;
-
-  img {
+  image {
     width: 100%;
-    display: block;
+    height: 120vh;
   }
-}
 </style>
 
 <script>
