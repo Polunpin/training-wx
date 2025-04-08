@@ -4,10 +4,10 @@
   </div>
 </template>
 <style lang="scss" scoped>
-  image {
-    width: 100%;
-    height: 120vh;
-  }
+img {
+  width: 100vw;
+  height: 120vh;
+}
 </style>
 
 <script>
