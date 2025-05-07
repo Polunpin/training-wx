@@ -101,8 +101,7 @@ export default {
         package: this.dataInfo.package,
         signType: this.dataInfo.signType,
         paySign: this.dataInfo.paySign,
-        success(res) {
-          console.log('支付成功:', res);
+        success() {
           wx.showToast({
             title: '支付成功',
             icon: 'success',

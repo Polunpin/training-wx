@@ -13,6 +13,7 @@
       <view class="info">
         <view class="tabTwo">
           <view class="tabTwo-item " v-for="(item,index) in fourLevel" :key="index"
+                v-show="fourLevel.length > 1"
                 @click="changeTabTwo(pitchIndex, index)"
                 :class="{
 							'active-click': picthFourIndex[pitchIndex]===index,
@@ -90,7 +91,6 @@ export default {
     if (!this.userinfo) {
       await this.$store.dispatch('initUserinfo')
     }
-    console.log(option, '页面参数'); //打印出上个页面传递的参数。
     if (option.level2Dir) {
       this.level2Dir = decodeURIComponent(option.level2Dir)
       this.level3Dir = option.level3Dir ? decodeURIComponent(option.level3Dir) : ''
@@ -105,8 +105,6 @@ export default {
         this.$set(this.picthFourIndex, this.pitchIndex, currentIndex);
       }
 
-      console.log(Object.keys(this.detail))
-      console.log(this.detail, 'detial')
     }
   },
   onLaunch() {

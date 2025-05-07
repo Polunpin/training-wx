@@ -24,7 +24,6 @@ export default {
                 }, data: obj.data,
             })
 
-            console.log(`微信云托管调用结果${result.errMsg} | callid:${result.callID}`)
             return result.data
         } catch (e) {
             const error = e.toString()

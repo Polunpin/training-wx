@@ -99,7 +99,6 @@ export default {
       this.pageLoading = false
       this.gold = res.data.gold
       this.challengeList = res.data.challenges
-      console.log(this.challengeList)
     },
     toReward() {
       uni.navigateTo({url: '/pages/reward/list'})
@@ -119,7 +118,6 @@ export default {
           }
         })
         this.isCoinLock = false
-        console.log(res)
         if (res.data) {
           this.gold = Number(this.gold) + Number(item.rewardGold)
           this.$set(item, 'sortOrder', 1);

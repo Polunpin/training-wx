@@ -109,7 +109,7 @@ export class TrackUtil {
   static formatDate(date) {
 
       if (date === undefined || date === null) {
-          console.log("日期转换格式1：" + date)
+          // console.log("日期转换格式1：" + date)
           return '';
       }
       let dateStr = date.toString()

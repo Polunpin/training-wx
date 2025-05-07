@@ -118,7 +118,6 @@ export default {
           },
           success: res => resolve(res.fileID),
           fail: e => {
-            console.log(e)
             const info = e.toString()
             if (info.indexOf('abort') !== -1) {
               reject(new Error('【文件上传失败】中断上传'))
@@ -167,7 +166,6 @@ export default {
     },
     handleStar(list) {
       this.performance = list
-      console.log(list)
     },
     async saveReport(callback) {
       let allRatesNonZero = this.performance ? this.performance.every(item => item.rate !== 0) : false;
@@ -194,7 +192,6 @@ export default {
         insights: this.insights,
         performance: JSON.stringify(this.performance)
       }
-      console.log(json)
       const res = await this.$cloudService.call({
         path: '/practiceRecord/savePracticeRecord',
         method: 'POST',

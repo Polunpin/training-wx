@@ -70,7 +70,6 @@ export default {
       })
       this.gold = res.data.gold
       this.rewardList = res.data.rewards
-      console.log(res.data)
     },
     toRecord() {
       uni.navigateTo({url: '/pages/reward/record'})

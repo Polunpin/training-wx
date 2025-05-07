@@ -72,7 +72,6 @@ export default {
       })
       this.pageLoading = false
       this.detailInfo = res.data
-      console.log(res.data)
     },
     async toChange() {
       if (this.isChangeLock) return

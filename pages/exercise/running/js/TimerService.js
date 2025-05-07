@@ -32,7 +32,7 @@ export class TimerService {
   // 继续计时
   timerResume() {
       const pauseTime = this.getPauseTime();
-      console.log('上一次的暂停时间', dayjs(pauseTime).format("YYYY-MM-DD HH:mm:ss"));
+      // console.log('上一次的暂停时间', dayjs(pauseTime).format("YYYY-MM-DD HH:mm:ss"));
       if (pauseTime) {
           this.calculateNewStartTime(pauseTime);
           this.setPausedTime(null);
@@ -48,7 +48,7 @@ export class TimerService {
   }
 
   setStartTime(time) {
-      console.log("设置偏移时间：", dayjs(time).format("YYYY-MM-DD HH:mm:ss"));
+      // console.log("设置偏移时间：", dayjs(time).format("YYYY-MM-DD HH:mm:ss"));
       wx.setStorageSync(this.StartTimeKey, time);
   }
 
@@ -57,7 +57,7 @@ export class TimerService {
   }
 
   setPausedTime(time) {
-      console.log("设置暂停时间：", dayjs(time).format("YYYY-MM-DD HH:mm:ss"));
+      // console.log("设置暂停时间：", dayjs(time).format("YYYY-MM-DD HH:mm:ss"));
       wx.setStorageSync(this.PausedTimeKey, time);
   }
 
@@ -82,8 +82,8 @@ export class TimerService {
       if (startTime) {
           // 计算新的 startTime，将 startTime 向前移动暂停的时间间隔
           const adjustedStartTime = startTime + (now - pauseTime);
-          console.log(`New Start Time ${startTime} + (${now} - ${pauseTime}) = ${adjustedStartTime}`);
-          console.log("偏移后的开始时间", dayjs(adjustedStartTime).format("YYYY-MM-DD HH:mm:ss"));
+          // console.log(`New Start Time ${startTime} + (${now} - ${pauseTime}) = ${adjustedStartTime}`);
+          // console.log("偏移后的开始时间", dayjs(adjustedStartTime).format("YYYY-MM-DD HH:mm:ss"));
           this.setStartTime(adjustedStartTime);
       }
   }

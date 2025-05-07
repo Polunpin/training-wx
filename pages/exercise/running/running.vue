@@ -151,12 +151,12 @@ export default {
       RunningService.shared.mapContent.moveToLocation(RunningService.shared.location)
     }
 
-    console.log(options)
+    // console.log(options)
     eventBus.on('status', (data) => {
       if (data === undefined) {
         return
       }
-      console.log('status 状态变化')
+      // console.log('status 状态变化')
       this.status = data
     })
 
@@ -164,14 +164,14 @@ export default {
       if (data === undefined) {
         return
       }
-      console.log('location 状态变化')
+      // console.log('location 状态变化')
       this.currentLocation = data
     })
     eventBus.on('points', (data) => {
       if (data === undefined) {
         return
       }
-      console.log('points 状态变化')
+      // console.log('points 状态变化')
       const polyline = {
         points: data || [],
         borderColor: '#ffffff',
@@ -185,7 +185,7 @@ export default {
       this.polyline = [polyline]
     })
     eventBus.on('distance', (data) => {
-      console.log('distance 状态变化', data)
+      // console.log('distance 状态变化', data)
       this.distance = TrackUtil.metersToKilometers(data)
     })
 
@@ -193,7 +193,7 @@ export default {
       if (data === undefined) {
         return
       }
-      console.log('duration 状态变化')
+      // console.log('duration 状态变化')
       // 计算配速
       const speed = TrackUtil.calculatePaceFromSpeed(RunningService.shared.speed)
       const avgSpeed = TrackUtil.calculateAveragePace(RunningService.shared.distance, data)
