@@ -20,14 +20,14 @@ export default {
   },
   onShareAppMessage: function () {
     return {
-      title: '护安行练车,稳当',
+      title: '练车,护安行',
       path: '/pages/index/index',
       imageUrl: ''  // 可选，自定义分享卡片的图片
     }
   },
   onShareTimeline: function () {
     return {
-      title: '护安行练车,稳当',
+      title: '练车,护安行',
       path: '/pages/index/index',
       imageUrl: ''  // 可选，自定义分享卡片的图片
     }

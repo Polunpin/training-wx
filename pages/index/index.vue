@@ -344,7 +344,7 @@ export default {
           &:first-child {
             width: 100%;
             height: 368rpx;
-            background-image: url('https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/module-1.png?sign=f82cae40000bafe9cb466e5734904047&t=1740908737');
+            background-image: url('https://7072-prod-1gnzk6n75a8b6b8b-1327385705.tcb.qcloud.la/images/index/module-1.png');
             background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
