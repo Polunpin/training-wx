@@ -1,4 +1,5 @@
 {
+  //这块代码有用吗？
   "easycom": {
     "^z-(.*)": "@zebra-ui/swiper/components/z-$1/z-$1.vue"
   },
